@@ -1,7 +1,7 @@
 // 登录认证配置，用于邮箱登录注册和 Google OAuth 登录。
 window.AUTH_CONFIG = {
-  // 后端 PHP 服务地址，auth.js 会把登录请求 POST 到这里。
-  apiBaseUrl: 'http://localhost:8000',
+  // 后端 PHP 服务地址，服务器已把 API 作为运行目录，不需要再拼接 /api。
+  apiBaseUrl: 'http://ajou.userapi.cn/',
   // 没有 redirect 参数时，登录成功默认进入控制台。
   loginSuccessPage: 'console.html',
   email: {
