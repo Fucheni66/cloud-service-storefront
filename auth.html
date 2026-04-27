@@ -249,19 +249,7 @@
         const message = document.getElementById("auth-message");
         const switchText = document.getElementById("auth-switch-text");
         const switchButton = document.getElementById("auth-switch-button");
-        const sendCodeButton = document.getElementById("send-code-button");
         let currentMode = "login";
-        let codeTimer = null;
-        let codeSeconds = 0;
-
-        function showMessage(text, type) {
-          message.textContent = text;
-          message.className =
-            "mb-4 rounded border px-3 py-2 text-sm " +
-            (type === "success"
-              ? "bg-green-50 border-green-100 text-green-700"
-              : "bg-blue-50 border-blue-100 text-primary");
-        }
 
         function setMode(mode) {
           currentMode = mode === "register" ? "register" : "login";
@@ -306,46 +294,6 @@
           setMode(currentMode === "login" ? "register" : "login");
         });
 
-        sendCodeButton.addEventListener("click", function () {
-          if (codeTimer) {
-            return;
-          }
-
-          codeSeconds = 60;
-          sendCodeButton.disabled = true;
-          sendCodeButton.classList.add("text-gray-400", "cursor-not-allowed");
-          showMessage("验证码已发送。", "info");
-
-          codeTimer = window.setInterval(function () {
-            codeSeconds -= 1;
-            sendCodeButton.textContent = codeSeconds + "s";
-            if (codeSeconds <= 0) {
-              window.clearInterval(codeTimer);
-              codeTimer = null;
-              sendCodeButton.disabled = false;
-              sendCodeButton.textContent = "获取验证码";
-              sendCodeButton.classList.remove(
-                "text-gray-400",
-                "cursor-not-allowed",
-              );
-            }
-          }, 1000);
-        });
-
-        document
-          .getElementById("login-form")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            showMessage("登录成功。", "success");
-          });
-
-        document
-          .getElementById("register-form")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            showMessage("注册成功。", "success");
-          });
-
         setMode(
           window.location.hash.replace("#", "") === "register"
             ? "register"
@@ -361,11 +309,11 @@
       })();
     </script>
     <!-- 认证配置：前端 Google Client ID、后端 API 地址、登录成功默认跳转页。 -->
-    <script src="assets/js/config/auth.config.js"></script>
+    <script src="assets/js/config/auth.config.js?v=20260428-1"></script>
     <!-- Google 官方 Identity Services SDK，负责弹出 Google 登录并返回 credential。 -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- 登录页逻辑：接收 Google credential，提交后端验证，并写入 localStorage。 -->
-    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/auth.js?v=20260428-1"></script>
     <!-- 公共导航登录态：登录后把“登录 / 注册”替换成头像/name 下拉菜单。 -->
     <script src="assets/js/nav-auth.js"></script>
   </body>

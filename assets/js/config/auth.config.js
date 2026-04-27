@@ -1,9 +1,15 @@
-// 登录认证配置，目前用于保存 Google OAuth 客户端参数。
+// 登录认证配置，用于邮箱登录注册和 Google OAuth 登录。
 window.AUTH_CONFIG = {
-  // 后端 PHP 服务地址，auth.js 会把 Google credential POST 到这里。
+  // 后端 PHP 服务地址，auth.js 会把登录请求 POST 到这里。
   apiBaseUrl: 'http://localhost:8000',
   // 没有 redirect 参数时，登录成功默认进入控制台。
   loginSuccessPage: 'console.html',
+  email: {
+    codePath: '/auth/code',
+    registerPath: '/auth/register',
+    loginPath: '/auth/login',
+  },
+  purchasesPath: '/purchases',
   google: {
     // Google Cloud 创建的 OAuth Web Client ID，前端初始化 Google 按钮必须使用。
     clientId: '203242566561-jp41htf16rca7cr5l5kusio7tubdoton.apps.googleusercontent.com',

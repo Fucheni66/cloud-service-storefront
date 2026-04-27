@@ -1,18 +1,56 @@
 // 云服务独立管理页面，根据 URL 参数 id 渲染服务管理信息。
-$(function () {
-  const serviceId = new URLSearchParams(window.location.search).get('id') || '';
-  const services = getConsoleServices((window.CONSOLE_PAGE_CONFIG || {}).services || []);
-  const service = services.find((item) => item.id === serviceId) || buildServiceFromId(serviceId);
+let backendPurchasesLoaded = false;
 
-  $('#console-manage-root').append(
+$(async function () {
+  const serviceId = new URLSearchParams(window.location.search).get('id') || '';
+  const config = window.CONSOLE_PAGE_CONFIG || {};
+
+  renderManageLoading();
+  const services = await getConsoleServices(config);
+  const service = services.find((item) => item.id === serviceId) || (backendPurchasesLoaded ? null : buildServiceFromId(serviceId));
+
+  $('#console-manage-root').empty().append(
     service ? renderManageView(service) : renderManageNotFound(serviceId)
   );
 });
 
-function getConsoleServices(configServices) {
-  return [...getStoredPurchasedServices(), ...configServices]
+async function getConsoleServices(config) {
+  const backendServices = await getBackendPurchasedServices(config);
+
+  if (backendServices) {
+    return backendServices.map((service) => normalizeAllocatedService(service));
+  }
+
+  return [...getStoredPurchasedServices(), ...(config.services || [])]
     .filter((service) => !isDemoService(service))
     .map((service) => normalizeAllocatedService(service));
+}
+
+async function getBackendPurchasedServices(config) {
+  const token = getAuthToken();
+
+  if (!token) {
+    return [];
+  }
+
+  try {
+    const response = await fetch(buildConsoleApiUrl(config, config.purchasesPath || '/purchases'), {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+
+    if (!response.ok || !data.success || !Array.isArray(data.items)) {
+      throw new Error(data.message || data.error || '购买记录读取失败');
+    }
+
+    backendPurchasesLoaded = true;
+    return data.items;
+  } catch (error) {
+    console.warn('后端购买记录读取失败，使用本地记录：', error.message || error);
+    return null;
+  }
 }
 
 function normalizeAllocatedService(service) {
@@ -34,6 +72,24 @@ function getStoredPurchasedServices() {
   } catch (error) {
     return [];
   }
+}
+
+function getAuthToken() {
+  const loginInfo = readJsonStorage('ajou_login_info');
+  return localStorage.getItem('ajou_auth_token') || (loginInfo && loginInfo.token) || '';
+}
+
+function readJsonStorage(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || 'null');
+  } catch (error) {
+    return null;
+  }
+}
+
+function buildConsoleApiUrl(config, path) {
+  const baseUrl = (config.apiBaseUrl || '').replace(/\/+$/, '');
+  return `${baseUrl}${path || ''}`;
 }
 
 function isDemoService(service) {
@@ -78,6 +134,15 @@ function buildServiceFromId(serviceId) {
     monthlyCost: '0.00',
     paidAt: new Date().toISOString(),
   };
+}
+
+function renderManageLoading() {
+  $('#console-manage-root').empty().append(
+    $('<div>', { class: 'bg-white rounded-xl border border-gray-200 shadow-sm p-10 text-center text-gray-500' }).append(
+      $('<i>', { class: 'fa-solid fa-spinner fa-spin text-primary text-2xl mb-3' }),
+      $('<div>', { class: 'text-sm', text: '正在读取云服务信息...' })
+    )
+  );
 }
 
 function renderManageView(service) {

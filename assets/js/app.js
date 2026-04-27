@@ -250,8 +250,9 @@ async function queryBackendPaymentStatus() {
 
     if (data.paid) {
       stopPaymentQueryPolling();
+      setPaymentStatus('支付成功，正在写入购买记录...');
+      await savePurchasedService(currentPaymentOrderId);
       setPaymentStatus('支付成功，正在跳转...');
-      savePurchasedService(currentPaymentOrderId);
       redirectToPaymentSuccess(currentPaymentOrderId);
       return;
     }
@@ -289,6 +290,7 @@ function buildPurchasedService(orderId) {
 
   return {
     id: orderId,
+    order_id: orderId,
     name: `${names.instance[state.instance] || state.instance} 云服务器`,
     category: isGpu ? 'GPU 云服务器' : '云服务器 ECS',
     instance: names.instance[state.instance] || state.instance,
@@ -301,16 +303,26 @@ function buildPurchasedService(orderId) {
     billing: names.billing[state.billing] || state.billing,
     expireAt: state.billing === 'hourly' ? '按量资源' : getExpireDate(duration),
     monthlyCost: currentPaymentAmount,
+    productCode: state.instance,
     paidAt: new Date().toISOString(),
   };
 }
 
-function savePurchasedService(orderId) {
+async function savePurchasedService(orderId) {
   const service = buildPurchasedService(orderId);
   const services = getStoredPurchasedServices().filter((item) => item.id !== service.id);
 
   services.unshift(service);
   localStorage.setItem(purchasedServicesStorageKey, JSON.stringify(services.slice(0, 20)));
+
+  try {
+    const result = await syncPurchaseToBackend(service);
+    console.log('购买记录已写入后端：', result.item || service);
+  } catch (error) {
+    console.warn('购买记录后端写入失败，已保留本地记录：', error.message || error);
+  }
+
+  return service;
 }
 
 function getStoredPurchasedServices() {
@@ -319,6 +331,48 @@ function getStoredPurchasedServices() {
     return Array.isArray(services) ? services : [];
   } catch (error) {
     return [];
+  }
+}
+
+async function syncPurchaseToBackend(service) {
+  const token = getAuthToken();
+
+  if (!token) {
+    throw new Error('用户未登录');
+  }
+
+  const response = await fetch(buildApiUrl(paymentApiConfig.purchases || '/purchases'), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      order_id: service.id,
+      amount: currentPaymentAmount,
+      subject: buildPaymentSubject(),
+      service,
+    }),
+  });
+  const data = await response.json();
+
+  if (!response.ok || !data.success) {
+    throw new Error(data.message || data.error || '购买记录写入失败');
+  }
+
+  return data;
+}
+
+function getAuthToken() {
+  const loginInfo = readJsonStorage('ajou_login_info');
+  return localStorage.getItem('ajou_auth_token') || (loginInfo && loginInfo.token) || '';
+}
+
+function readJsonStorage(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || 'null');
+  } catch (error) {
+    return null;
   }
 }
 
