@@ -2,8 +2,11 @@
 
 项目主要使用 HTML、CSS 和 JavaScript 编写，页面风格参考云服务厂商的产品购买、控制台和登录流程。
 
-## 内容
+## 项目内容
 
+静态页面拆分为多个独立页面，页面数据和交互逻辑拆分到 JS 配置和脚本文件中，方便后续维护。
+
+当前前端包含这些页面：
 
 - `index.html`：首页，展示平台介绍、搜索栏、热门产品和系统架构说明。
 - `products.html`：产品购买页，使用 jQuery 根据配置动态渲染 CPU/GPU 云服务器列表。
@@ -17,6 +20,7 @@
 
 ## 技术栈
 
+前端主要使用：
 
 - HTML
 - CSS
@@ -55,7 +59,7 @@
 
 ## 页面数据配置
 
-产品、购买参数、控制台数据和认证  `assets/js/config/` 目录。
+页面上的产品、购买参数、控制台数据和认证参数统一放在 `assets/js/config/` 目录。
 
 例如：
 
@@ -67,7 +71,7 @@
 
 ## Google 登录流程
 
-前端接入了 Google Identity Services。
+前端已接入 Google Identity Services。
 
 前端流程是：
 
@@ -76,7 +80,7 @@
         ↓
 Google 返回 credential / ID Token
         ↓
-auth.js 把 credential POST 到后端 /auth/google
+auth.js 把 credential POST 到后端 google_login.php
         ↓
 后端验证成功后返回 user + token
         ↓
@@ -99,7 +103,7 @@ ajou_auth_token
 
 ## 本地运行
 
-直接用静态服务器运行前端。
+可以直接用静态服务器运行前端。
 
 ```bash
 cd /Users/apple/Sites/localhost/ajou_server
@@ -112,11 +116,32 @@ python3 -m http.server 8887
 http://127.0.0.1:8887/index.html
 ```
 
-如果要测试 Google 登录的完整流程，还需要单独启动后端服务：
+如果要测试 Google 登录的完整流程，需要单独运行后端接口。服务器部署时可以把 `backend/api` 作为运行目录，接口直接访问 `.php` 文件。
 
 ```bash
-cd /Users/apple/Sites/localhost/ajou_server/backend/public
+cd /Users/apple/Sites/localhost/ajou_server/backend/api
 php -S localhost:8000
 ```
 
+## GitHub Pages 部署
 
+这个仓库只建议托管前端代码。后端目录包含本地配置、支付密钥和数据文件，不建议把 `backend/` 提交到公开仓库。
+
+可以用 GitHub Pages 发布前端页面：
+
+```text
+Settings -> Pages -> Deploy from a branch -> main -> / root
+```
+
+发布后访问地址类似：
+
+```text
+https://username.github.io/repository/
+```
+
+## 注意事项
+
+- 当前项目不是生产环境项目。
+- 前端里的 Google Client ID 可以公开，但后端密钥、支付私钥、用户数据不能公开。
+- 在线页面需要在 `auth.config.js`、`console.config.js` 和 `payment.config.js` 中配置公网 HTTPS 后端地址。
+- 当前 `.gitignore` 已经忽略 `backend/`，避免误提交敏感后端文件。
