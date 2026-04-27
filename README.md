@@ -1,12 +1,9 @@
-# 云极算力前端学习项目
+# 云服务商算力前端演示
 
-这是我用来学习和展示的云服务器购买平台前端项目。项目主要使用 HTML、CSS 和 JavaScript 编写，页面风格参考云服务厂商的产品购买、控制台和登录流程。
+项目主要使用 HTML、CSS 和 JavaScript 编写，页面风格参考云服务厂商的产品购买、控制台和登录流程。
 
-## 我做了什么
+## 内容
 
-我把一个完整的静态页面拆分成了多个独立页面，并把页面数据和交互逻辑拆到 JS 配置和脚本文件中，方便后续维护和学习。
-
-当前前端包含这些页面：
 
 - `index.html`：首页，展示平台介绍、搜索栏、热门产品和系统架构说明。
 - `products.html`：产品购买页，使用 jQuery 根据配置动态渲染 CPU/GPU 云服务器列表。
@@ -20,7 +17,6 @@
 
 ## 技术栈
 
-我在这个项目前端里主要使用：
 
 - HTML
 - CSS
@@ -59,7 +55,7 @@
 
 ## 页面数据配置
 
-我把页面上的产品、购买参数、控制台数据和认证参数都拆到了 `assets/js/config/` 目录。
+产品、购买参数、控制台数据和认证  `assets/js/config/` 目录。
 
 例如：
 
@@ -71,7 +67,7 @@
 
 ## Google 登录流程
 
-我已经在前端接入了 Google Identity Services。
+前端接入了 Google Identity Services。
 
 前端流程是：
 
@@ -103,7 +99,7 @@ ajou_auth_token
 
 ## 本地运行
 
-我可以直接用静态服务器运行前端。
+直接用静态服务器运行前端。
 
 ```bash
 cd /Users/apple/Sites/localhost/ajou_server
@@ -123,25 +119,4 @@ cd /Users/apple/Sites/localhost/ajou_server/backend/public
 php -S localhost:8000
 ```
 
-## GitHub Pages 部署
 
-这个仓库只建议托管前端代码。我的后端目录包含本地配置、支付密钥和数据文件，所以我不会把 `backend/` 提交到公开仓库。
-
-我可以用 GitHub Pages 发布前端页面：
-
-```text
-Settings -> Pages -> Deploy from a branch -> main -> / root
-```
-
-发布后访问地址类似：
-
-```text
-https://我的用户名.github.io/仓库名/
-```
-
-## 注意事项
-
-- 这是我的学习项目，不是生产环境项目。
-- 前端里的 Google Client ID 可以公开，但后端密钥、支付私钥、用户数据不能公开。
-- 如果部署到 GitHub Pages，`auth.config.js` 里的 `apiBaseUrl` 需要改成公网后端地址，否则在线页面无法调用本地的 `localhost:8000`。
-- 当前 `.gitignore` 已经忽略 `backend/`，避免误提交敏感后端文件。
