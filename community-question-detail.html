@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问答详情 - 云极算力</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0 flex items-center">
+            <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
+            <span class="font-bold text-xl tracking-wider text-gray-900">云极算力</span>
+          </a>
+          <div class="hidden md:ml-10 md:flex md:space-x-8">
+            <a href="index.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+            <a href="products.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品购买</a>
+            <a href="product-dynamics.html#solution" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">解决方案</a>
+            <a href="developer-community.html" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">开发者社区</a>
+            <a href="product-dynamics.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品动态</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="console.html" class="text-sm font-medium text-gray-500 hover:text-primary">控制台</a>
+          <a href="auth.html" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm">登录 / 注册</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow bg-bg-gray pb-16">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-sm text-gray-500 mb-3">
+          <a href="index.html" class="hover:text-primary">首页</a>
+          <span class="mx-2">/</span>
+          <a href="developer-community.html" class="hover:text-primary">开发者社区</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-900">问答详情</span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-3">问答详情</h1>
+        <p class="text-gray-500">查看问题描述、处理建议和社区回复。</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+        <div class="space-y-6">
+          <article data-question-detail="public-ip" class="bg-white border border-gray-200 rounded-lg p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
+              <div>
+                <span class="inline-flex items-center bg-blue-50 text-primary text-xs font-medium px-2 py-1 rounded">连接</span>
+                <h2 class="text-2xl font-bold text-gray-900 mt-3">实例购买成功后，为什么控制台暂时没有公网地址？</h2>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                  <span>云服务器 ECS</span>
+                  <span>2 个回复</span>
+                  <span>2026-04-27</span>
+                </div>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>购买成功后页面已经提示资源分配中，但进入控制台时公网地址仍为空，实例状态也没有立即显示为运行中。</p>
+              <p>这种情况通常是实例记录已经写入浏览器本地存储，但公网地址、系统镜像和资源状态还处在模拟分配阶段。正式环境里需要等待后端资源编排完成后再回写控制台。</p>
+            </div>
+            <div class="mt-6 bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-2">推荐处理</div>
+              <p class="text-sm text-gray-600 leading-6">先刷新控制台页面确认本地购买记录是否存在。如果是正式资源，应通过订单号查询开通状态；如果超过预计时间仍未完成，可以提交工单并附上订单编号。</p>
+            </div>
+            <div class="mt-6 border-t border-gray-100 pt-6">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <h3 class="font-bold text-gray-900">社区回复</h3>
+                <span data-comment-count class="text-xs text-gray-400">2 条评论</span>
+              </div>
+
+              <form data-comment-form class="flex items-start gap-3 mb-5">
+                <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold flex-shrink-0">我</div>
+                <div class="flex-1">
+                  <textarea data-comment-input rows="3" placeholder="写下你的评论..." class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary resize-y"></textarea>
+                  <div class="flex justify-end mt-2">
+                    <button type="submit" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm font-medium transition">发表评论</button>
+                  </div>
+                </div>
+              </form>
+
+              <div data-comment-list class="space-y-5">
+                <article class="flex gap-3">
+                  <div class="w-9 h-9 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm font-bold flex-shrink-0">支</div>
+                  <div class="flex-1 border-b border-gray-100 pb-5">
+                    <div class="flex flex-wrap items-center gap-2 text-sm">
+                      <span class="font-medium text-gray-900">云极技术支持</span>
+                      <span class="bg-blue-50 text-primary text-xs px-2 py-0.5 rounded">官方</span>
+                      <span class="text-xs text-gray-400">2026-04-27 10:20</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2 leading-6">本地预览环境不会真实分配公网 IP，购买成功后只会在控制台显示模拟资源信息。</p>
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mt-3">
+                      <button type="button" class="hover:text-primary"><i class="fa-regular fa-thumbs-up mr-1"></i>12</button>
+                      <button type="button" class="hover:text-primary"><i class="fa-regular fa-comment mr-1"></i>回复</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="flex gap-3">
+                  <div class="w-9 h-9 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-sm font-bold flex-shrink-0">用</div>
+                  <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-2 text-sm">
+                      <span class="font-medium text-gray-900">社区用户</span>
+                      <span class="text-xs text-gray-400">2026-04-27 11:05</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2 leading-6">可以先确认浏览器没有开启隐私模式，否则本地存储可能不会保留购买记录。</p>
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mt-3">
+                      <button type="button" class="hover:text-primary"><i class="fa-regular fa-thumbs-up mr-1"></i>5</button>
+                      <button type="button" class="hover:text-primary"><i class="fa-regular fa-comment mr-1"></i>回复</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </article>
+
+          <article data-question-detail="billing-precision" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
+              <div>
+                <span class="inline-flex items-center bg-green-50 text-green-600 text-xs font-medium px-2 py-1 rounded">计费</span>
+                <h2 class="text-2xl font-bold text-gray-900 mt-3">按量计费为什么只显示两位小数？</h2>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                  <span>费用中心</span>
+                  <span>1 个回复</span>
+                  <span>2026-04-26</span>
+                </div>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>购买页里按量计费显示为每小时费用，但实际计算时可能有更多小数位。页面现在只展示两位小数，是为了让用户在下单前更容易确认金额。</p>
+              <p>如果后续接入真实计费系统，前端展示金额和后端结算金额应统一由后端返回，避免前端自行计算造成误差。</p>
+            </div>
+            <div class="mt-6 bg-green-50 border border-green-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-2">推荐处理</div>
+              <p class="text-sm text-gray-600 leading-6">展示层保留两位小数即可。支付请求中的金额必须使用后端确认后的金额，不能只依赖浏览器页面计算。</p>
+            </div>
+            <div class="mt-6 border-t border-gray-100 pt-6">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <h3 class="font-bold text-gray-900">社区回复</h3>
+                <span data-comment-count class="text-xs text-gray-400">1 条评论</span>
+              </div>
+
+              <form data-comment-form class="flex items-start gap-3 mb-5">
+                <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold flex-shrink-0">我</div>
+                <div class="flex-1">
+                  <textarea data-comment-input rows="3" placeholder="写下你的评论..." class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary resize-y"></textarea>
+                  <div class="flex justify-end mt-2">
+                    <button type="submit" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm font-medium transition">发表评论</button>
+                  </div>
+                </div>
+              </form>
+
+              <div data-comment-list class="space-y-5">
+                <article class="flex gap-3">
+                  <div class="w-9 h-9 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm font-bold flex-shrink-0">支</div>
+                  <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-2 text-sm">
+                      <span class="font-medium text-gray-900">云极技术支持</span>
+                      <span class="bg-blue-50 text-primary text-xs px-2 py-0.5 rounded">官方</span>
+                      <span class="text-xs text-gray-400">2026-04-26 16:30</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2 leading-6">当前演示页面按小时费用统一保留两位小数，正式账单可以在费用中心查看明细。</p>
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mt-3">
+                      <button type="button" class="hover:text-primary"><i class="fa-regular fa-thumbs-up mr-1"></i>8</button>
+                      <button type="button" class="hover:text-primary"><i class="fa-regular fa-comment mr-1"></i>回复</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="space-y-6">
+          <section class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">相关问题</h2>
+            <div class="space-y-3 text-sm">
+              <a href="community-question-detail.html?question=public-ip" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">
+                实例购买成功后，为什么控制台暂时没有公网地址？
+              </a>
+              <a href="community-question-detail.html?question=billing-precision" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">
+                按量计费为什么只显示两位小数？
+              </a>
+            </div>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">继续交流</h2>
+            <div class="space-y-3">
+              <a href="community-publish.html" class="inline-flex w-full items-center justify-center bg-primary hover:bg-primary-hover text-white px-4 py-2.5 rounded text-sm font-medium transition">
+                发表问题 <i class="fa-solid fa-pen-to-square ml-2 text-xs"></i>
+              </a>
+              <a href="developer-community.html#help" class="inline-flex w-full items-center justify-center bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2.5 rounded text-sm font-medium transition">
+                返回问答列表
+              </a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="bg-gray-800 text-gray-300 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="text-white font-bold mb-4">关于我们</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="product-dynamics-detail.html?id=about-company" class="hover:text-white">公司简介</a></li>
+          <li><a href="product-dynamics-detail.html?id=about-news" class="hover:text-white">新闻动态</a></li>
+          <li><a href="product-dynamics-detail.html?id=about-contact" class="hover:text-white">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">产品服务</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="products.html" class="hover:text-white">云服务器 ECS</a></li>
+          <li><a href="products.html" class="hover:text-white">GPU 云服务器</a></li>
+          <li><a href="products.html" class="hover:text-white">云数据库 RDS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">帮助支持</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="product-dynamics-detail.html?id=support-help" class="hover:text-white">帮助中心</a></li>
+          <li><a href="product-dynamics-detail.html?id=support-api" class="hover:text-white">API 文档</a></li>
+          <li><a href="product-dynamics-detail.html?id=support-ticket" class="hover:text-white">提交工单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">联系方式</h4>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fa-solid fa-phone mr-2"></i> 400-888-8888</li>
+          <li><i class="fa-solid fa-envelope mr-2"></i> support@yunjicloud.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-700 text-sm text-center">&copy; 2026 云极算力网络科技有限公司 版权所有</div>
+  </footer>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const currentQuestion = params.get('question') || 'public-ip';
+      const details = document.querySelectorAll('[data-question-detail]');
+      let matched = false;
+
+      details.forEach(function (detail) {
+        const isActive = detail.dataset.questionDetail === currentQuestion;
+        detail.classList.toggle('hidden', !isActive);
+        matched = matched || isActive;
+      });
+
+      if (!matched && details.length > 0) {
+        details[0].classList.remove('hidden');
+      }
+
+      document.querySelectorAll('[data-comment-form]').forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const input = form.querySelector('[data-comment-input]');
+          const content = input.value.trim();
+          if (!content) {
+            input.focus();
+            return;
+          }
+
+          const commentList = form.parentElement.querySelector('[data-comment-list]');
+          const commentCount = form.parentElement.querySelector('[data-comment-count]');
+          const commentItem = document.createElement('article');
+          const contentNode = document.createElement('p');
+
+          commentItem.className = 'flex gap-3';
+          commentItem.innerHTML = '<div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold flex-shrink-0">我</div><div class="flex-1 border-b border-gray-100 pb-5"><div class="flex flex-wrap items-center gap-2 text-sm"><span class="font-medium text-gray-900">我</span><span class="text-xs text-gray-400">刚刚</span></div><div class="flex items-center gap-4 text-xs text-gray-400 mt-3"><button type="button" class="hover:text-primary"><i class="fa-regular fa-thumbs-up mr-1"></i>0</button><button type="button" class="hover:text-primary"><i class="fa-regular fa-comment mr-1"></i>回复</button></div></div>';
+          contentNode.className = 'text-sm text-gray-600 mt-2 leading-6';
+          contentNode.textContent = content;
+          commentItem.querySelector('.flex-1').insertBefore(contentNode, commentItem.querySelector('.flex.items-center.gap-4'));
+
+          commentList.insertBefore(commentItem, commentList.firstChild);
+          input.value = '';
+
+          const nextCount = (parseInt(commentCount.textContent, 10) || 0) + 1;
+          commentCount.textContent = nextCount + ' 条评论';
+        });
+      });
+    })();
+  </script>
+  <script src="assets/js/nav-auth.js"></script>
+</body>
+</html>

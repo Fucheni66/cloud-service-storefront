@@ -1,0 +1,11 @@
+# 不提交后端代码、密钥和本地数据
+backend/
+
+# 系统和编辑器文件
+.DS_Store
+.idea/
+.vscode/
+
+# 依赖和日志
+node_modules/
+*.log

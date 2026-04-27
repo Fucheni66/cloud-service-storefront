@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品动态详情 - 云极算力</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0 flex items-center">
+            <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
+            <span class="font-bold text-xl tracking-wider text-gray-900">云极算力</span>
+          </a>
+          <div class="hidden md:ml-10 md:flex md:space-x-8">
+            <a href="index.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+            <a href="products.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品购买</a>
+            <a href="product-dynamics.html#solution" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">解决方案</a>
+            <a href="developer-community.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">开发者社区</a>
+            <a href="product-dynamics.html" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品动态</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="console.html" class="text-sm font-medium text-gray-500 hover:text-primary">控制台</a>
+          <a href="auth.html" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm">登录 / 注册</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow bg-bg-gray pb-16">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-sm text-gray-500 mb-3">
+          <a href="index.html" class="hover:text-primary">首页</a>
+          <span class="mx-2">/</span>
+          <a href="product-dynamics.html" class="hover:text-primary">产品动态</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-900">详情</span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-3">产品动态详情</h1>
+        <p class="text-gray-500">查看产品发布、价格调整、维护公告和解决方案的完整说明。</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+        <div class="space-y-6">
+          <article data-dynamics-detail="release-a100" class="bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-blue-50 text-primary border border-blue-100 text-xs font-medium px-2 py-1 rounded">新品发布</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">GPU A100 训练实例上线</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-27</span>
+                <span>适用产品：GPU 云服务器</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>云极算力新增 A100 训练实例规格，面向深度学习训练、模型微调和大规模推理测试场景。</p>
+              <p>该规格提供更高显存容量和更稳定的长周期计算能力，适合需要持续运行训练任务的团队使用。</p>
+            </div>
+            <div class="mt-6 bg-gray-50 border border-gray-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-3">本次更新</div>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>新增 A100 40GB GPU 实例规格。</li>
+                <li>支持深度学习训练、模型微调和推理验证。</li>
+                <li>实例购买页可查看可用规格和价格。</li>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <a href="products.html" class="inline-flex items-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">查看可购买规格 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="price-cpu" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-orange-50 text-orange-600 border border-orange-100 text-xs font-medium px-2 py-1 rounded">价格调整</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">通用型 CPU 实例按月价格优化</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-26</span>
+                <span>适用产品：云服务器 ECS</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>通用型 CPU 实例完成价格配置更新，覆盖 2C4G、4C8G 和 8C16G 等常用规格。</p>
+              <p>首页热门产品、产品购买页和下单页已统一读取商品配置，确保用户看到的价格保持一致。</p>
+            </div>
+            <div class="mt-6 bg-gray-50 border border-gray-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-3">影响范围</div>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>涉及通用型 CPU 实例的月付和按量展示价格。</li>
+                <li>已同步到首页热门产品和产品购买页。</li>
+                <li>已购买资源不受本次展示配置变更影响。</li>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <a href="purchase.html?instance=2c4g" class="inline-flex items-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">立即配置实例 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="maintenance-network" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-gray-50 text-gray-600 border border-gray-200 text-xs font-medium px-2 py-1 rounded">维护公告</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">华北2地域网络维护窗口</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-25</span>
+                <span>影响地域：华北2(北京)</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>华北2地域将在低峰时段进行网络设备维护，维护期间已运行实例不受影响。</p>
+              <p>少量新购资源可能出现短暂分配延迟。如资源长时间未开通，可在控制台查看订单状态或提交工单。</p>
+            </div>
+            <div class="mt-6 bg-gray-50 border border-gray-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-3">用户建议</div>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>避免在维护窗口内集中创建大量实例。</li>
+                <li>已经运行的实例无需手动操作。</li>
+                <li>如新购资源延迟，优先查看控制台资源状态。</li>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <a href="console.html" class="inline-flex items-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">查看我的资源 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="solution-business-cloud" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-indigo-50 text-indigo-600 border border-indigo-100 text-xs font-medium px-2 py-1 rounded">解决方案</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">中小型业务上云部署方案</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-27</span>
+                <span>适用场景：官网、后台、轻量业务系统</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>该方案面向中小型业务系统，推荐以云服务器 ECS 为核心，搭配通用型 SSD 和基础安全组规则完成快速上线。</p>
+              <p>方案适合企业官网、后台管理系统、轻量 API 服务和测试环境，重点关注成本、可维护性和基础安全。</p>
+            </div>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">计算</div>
+                <p class="text-sm text-gray-500">2C4G 或 4C8G ECS 实例。</p>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">存储</div>
+                <p class="text-sm text-gray-500">40GB 通用型 SSD 起步。</p>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">网络</div>
+                <p class="text-sm text-gray-500">开放必要端口并限制管理入口。</p>
+              </div>
+            </div>
+            <div class="mt-6">
+              <a href="products.html" class="inline-flex items-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">查看推荐产品 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="about-company" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-slate-50 text-slate-600 border border-slate-200 text-xs font-medium px-2 py-1 rounded">关于我们</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">公司简介</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-28</span>
+                <span>栏目：关于我们</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>云极算力专注于云服务器、GPU 算力和基础云资源服务，为个人开发者、中小企业和实验团队提供稳定易用的计算环境。</p>
+              <p>平台围绕实例购买、资源开通、费用展示和控制台管理构建核心流程，帮助用户快速完成业务部署和资源管理。</p>
+            </div>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">云服务器</div>
+                <p class="text-sm text-gray-500">覆盖通用计算、业务部署和测试环境。</p>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">GPU 算力</div>
+                <p class="text-sm text-gray-500">支持推理测试、模型训练和实验环境。</p>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">资源管理</div>
+                <p class="text-sm text-gray-500">购买后可在控制台查看实例记录。</p>
+              </div>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="about-news" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-slate-50 text-slate-600 border border-slate-200 text-xs font-medium px-2 py-1 rounded">关于我们</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">新闻动态</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-28</span>
+                <span>栏目：关于我们</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>新闻动态用于集中展示云极算力的平台更新、产品发布、价格调整、维护公告和解决方案内容。</p>
+              <p>用户可通过产品动态页面按分类查看最新文章，也可以从页脚直接进入指定文章详情。</p>
+            </div>
+            <div class="mt-6 bg-gray-50 border border-gray-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-3">当前已上线栏目</div>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>新品发布、价格调整、维护公告。</li>
+                <li>解决方案、关于我们、帮助支持。</li>
+                <li>每篇文章支持独立详情页访问。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="about-contact" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-slate-50 text-slate-600 border border-slate-200 text-xs font-medium px-2 py-1 rounded">关于我们</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">联系我们</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-28</span>
+                <span>栏目：关于我们</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>如需了解云服务器选型、GPU 实例配置、购买流程或资源开通状态，可以通过以下方式联系云极算力。</p>
+            </div>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">服务热线</div>
+                <p class="text-sm text-gray-500">400-888-8888</p>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                <div class="font-bold text-gray-900 mb-2">支持邮箱</div>
+                <p class="text-sm text-gray-500">support@yunjicloud.com</p>
+              </div>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="support-help" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-emerald-50 text-emerald-600 border border-emerald-100 text-xs font-medium px-2 py-1 rounded">帮助支持</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">帮助中心</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-28</span>
+                <span>栏目：帮助支持</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>帮助中心整理购买、支付、资源开通、控制台查看和常见实例连接问题。</p>
+              <p>如果购买成功后资源暂未显示，可以先刷新控制台页面，再根据订单号检查支付和开通状态。</p>
+            </div>
+            <div class="mt-6">
+              <a href="developer-community.html#help" class="inline-flex items-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">进入社区问答 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="support-api" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-emerald-50 text-emerald-600 border border-emerald-100 text-xs font-medium px-2 py-1 rounded">帮助支持</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">API 文档</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-28</span>
+                <span>栏目：帮助支持</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>API 文档用于说明前端购买页、支付创建、支付查询和二维码接口的调用关系。</p>
+              <p>正式对接时，订单金额和商品信息应由后端确认后返回，前端只负责展示和发起支付流程。</p>
+            </div>
+            <div class="mt-6 bg-gray-50 border border-gray-100 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-3">当前接口</div>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>生成支付：POST /alipay/create</li>
+                <li>查询支付：GET /alipay/query</li>
+                <li>二维码：GET /qrcode?url=</li>
+              </ul>
+            </div>
+          </article>
+
+          <article data-dynamics-detail="support-ticket" class="hidden bg-white border border-gray-200 rounded-lg p-6">
+            <div class="mb-5">
+              <span class="inline-flex items-center bg-emerald-50 text-emerald-600 border border-emerald-100 text-xs font-medium px-2 py-1 rounded">帮助支持</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-3">提交工单</h2>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mt-3">
+                <span>发布日期：2026-04-28</span>
+                <span>栏目：帮助支持</span>
+              </div>
+            </div>
+            <div class="prose max-w-none text-gray-600 text-sm leading-7">
+              <p>当遇到支付异常、资源长时间未开通、实例状态异常或无法连接时，可以提交工单。</p>
+              <p>提交时建议附上订单号、实例规格、地域和问题截图，便于支持人员快速定位。</p>
+            </div>
+            <div class="mt-6">
+              <a href="developer-community.html#ticket" class="inline-flex items-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">查看技术支持 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </article>
+        </div>
+
+        <aside class="space-y-6">
+          <section class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">相关动态</h2>
+            <div class="space-y-3 text-sm">
+              <a href="product-dynamics-detail.html?id=release-a100" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">GPU A100 训练实例上线</a>
+              <a href="product-dynamics-detail.html?id=price-cpu" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">通用型 CPU 实例按月价格优化</a>
+              <a href="product-dynamics-detail.html?id=maintenance-network" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">华北2地域网络维护窗口</a>
+              <a href="product-dynamics-detail.html?id=solution-business-cloud" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">中小型业务上云部署方案</a>
+              <a href="product-dynamics-detail.html?id=about-company" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">公司简介</a>
+              <a href="product-dynamics-detail.html?id=about-news" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">新闻动态</a>
+              <a href="product-dynamics-detail.html?id=about-contact" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">联系我们</a>
+              <a href="product-dynamics-detail.html?id=support-help" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">帮助中心</a>
+              <a href="product-dynamics-detail.html?id=support-api" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">API 文档</a>
+              <a href="product-dynamics-detail.html?id=support-ticket" class="block border border-gray-200 rounded p-3 hover:border-primary hover:bg-blue-50 transition">提交工单</a>
+            </div>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">更多操作</h2>
+            <div class="space-y-3">
+              <a href="product-dynamics.html" class="inline-flex w-full items-center justify-center bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2.5 rounded text-sm font-medium transition">返回产品动态</a>
+              <a href="products.html" class="inline-flex w-full items-center justify-center bg-primary hover:bg-primary-hover text-white px-4 py-2.5 rounded text-sm font-medium transition">查看产品购买</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="bg-gray-800 text-gray-300 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="text-white font-bold mb-4">关于我们</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="product-dynamics-detail.html?id=about-company" class="hover:text-white">公司简介</a></li>
+          <li><a href="product-dynamics-detail.html?id=about-news" class="hover:text-white">新闻动态</a></li>
+          <li><a href="product-dynamics-detail.html?id=about-contact" class="hover:text-white">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">产品服务</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="products.html" class="hover:text-white">云服务器 ECS</a></li>
+          <li><a href="products.html" class="hover:text-white">GPU 云服务器</a></li>
+          <li><a href="products.html" class="hover:text-white">云数据库 RDS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">帮助支持</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="product-dynamics-detail.html?id=support-help" class="hover:text-white">帮助中心</a></li>
+          <li><a href="product-dynamics-detail.html?id=support-api" class="hover:text-white">API 文档</a></li>
+          <li><a href="product-dynamics-detail.html?id=support-ticket" class="hover:text-white">提交工单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">联系方式</h4>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fa-solid fa-phone mr-2"></i> 400-888-8888</li>
+          <li><i class="fa-solid fa-envelope mr-2"></i> support@yunjicloud.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-700 text-sm text-center">&copy; 2026 云极算力网络科技有限公司 版权所有</div>
+  </footer>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const currentId = params.get('id') || 'release-a100';
+      const details = document.querySelectorAll('[data-dynamics-detail]');
+      let matched = false;
+
+      details.forEach(function (detail) {
+        const isActive = detail.dataset.dynamicsDetail === currentId;
+        detail.classList.toggle('hidden', !isActive);
+        matched = matched || isActive;
+      });
+
+      if (!matched && details.length > 0) {
+        details[0].classList.remove('hidden');
+      }
+    })();
+  </script>
+  <script src="assets/js/nav-auth.js"></script>
+</body>
+</html>

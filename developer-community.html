@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开发者社区 - 云极算力</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0 flex items-center">
+            <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
+            <span class="font-bold text-xl tracking-wider text-gray-900">云极算力</span>
+          </a>
+          <div class="hidden md:ml-10 md:flex md:space-x-8">
+            <a href="index.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+            <a href="products.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品购买</a>
+            <a href="product-dynamics.html#solution" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">解决方案</a>
+            <a href="developer-community.html" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">开发者社区</a>
+            <a href="product-dynamics.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品动态</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="console.html" class="text-sm font-medium text-gray-500 hover:text-primary">控制台</a>
+          <a href="auth.html" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm">登录 / 注册</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow bg-bg-gray pb-16">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-sm text-gray-500 mb-3">
+          <a href="index.html" class="hover:text-primary">首页</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-900">开发者社区</span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-3">开发者社区</h1>
+        <p class="text-gray-500">获取云服务器实践教程、API 文档、常见问题和技术支持入口。</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+        <div class="space-y-6">
+          <section id="help" class="bg-white border border-gray-200 rounded-lg p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+              <h2 class="text-xl font-bold text-gray-900">社区问答</h2>
+              <a href="community-publish.html" class="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm font-medium transition">
+                <i class="fa-solid fa-pen-to-square mr-2 text-xs"></i> 发表
+              </a>
+            </div>
+            <div class="space-y-4">
+              <article class="border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-blue-50 transition">
+                <a href="community-question-detail.html?question=public-ip" class="flex items-start gap-3">
+                  <span class="mt-0.5 bg-blue-50 text-primary text-xs font-medium px-2 py-1 rounded">连接</span>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-gray-900">实例购买成功后，为什么控制台暂时没有公网地址？</h3>
+                    <p class="text-sm text-gray-500 mt-1">资源分配完成后会写入控制台，本地预览环境会从浏览器存储读取购买记录。</p>
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mt-3">
+                      <span>云服务器 ECS</span>
+                      <span>2 个回复</span>
+                      <span>2026-04-27</span>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-angle-right text-gray-300 mt-1"></i>
+                </a>
+              </article>
+              <article class="border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-blue-50 transition">
+                <a href="community-question-detail.html?question=billing-precision" class="flex items-start gap-3">
+                  <span class="mt-0.5 bg-green-50 text-green-600 text-xs font-medium px-2 py-1 rounded">计费</span>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-gray-900">按量计费为什么只显示两位小数？</h3>
+                    <p class="text-sm text-gray-500 mt-1">购买页展示按小时费用，金额统一保留两位小数，方便用户确认订单。</p>
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mt-3">
+                      <span>费用中心</span>
+                      <span>1 个回复</span>
+                      <span>2026-04-26</span>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-angle-right text-gray-300 mt-1"></i>
+                </a>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside class="space-y-6">
+          <section id="ticket" class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">技术支持</h2>
+            <div class="space-y-3 text-sm text-gray-600">
+              <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                <span>在线工单</span>
+                <span class="text-primary font-medium">09:00-22:00</span>
+              </div>
+              <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                <span>实例故障</span>
+                <span class="text-primary font-medium">优先响应</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>社区回复</span>
+                <span class="text-primary font-medium">工作日</span>
+              </div>
+            </div>
+            <a href="console.html" class="mt-5 inline-flex w-full items-center justify-center bg-primary hover:bg-primary-hover text-white px-4 py-2.5 rounded text-sm font-medium transition">
+              前往控制台 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </a>
+          </section>
+
+          <section id="tutorials" class="bg-white border border-gray-200 rounded-lg p-6">
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <h2 class="text-lg font-bold text-gray-900">精选教程</h2>
+              <span class="text-sm text-gray-400">持续更新</span>
+            </div>
+            <div class="divide-y divide-gray-100">
+              <article class="py-4 first:pt-0">
+                <div>
+                  <h3 class="font-bold text-gray-900">ECS 实例初始化和远程连接</h3>
+                  <p class="text-sm text-gray-500 mt-1">完成实例购买后，配置登录密钥、安全组和 SSH 连接。</p>
+                  <span class="block text-xs text-gray-400 mt-2">2026-04-27</span>
+                </div>
+              </article>
+              <article class="py-4">
+                <div>
+                  <h3 class="font-bold text-gray-900">GPU 实例运行推理服务</h3>
+                  <p class="text-sm text-gray-500 mt-1">检查驱动环境、部署模型服务，并监控显存占用。</p>
+                  <span class="block text-xs text-gray-400 mt-2">2026-04-26</span>
+                </div>
+              </article>
+              <article class="py-4 pb-0">
+                <div>
+                  <h3 class="font-bold text-gray-900">按量计费资源的成本查看</h3>
+                  <p class="text-sm text-gray-500 mt-1">了解小时单价、月预估费用和控制台资源记录。</p>
+                  <span class="block text-xs text-gray-400 mt-2">2026-04-25</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="bg-gray-800 text-gray-300 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="text-white font-bold mb-4">关于我们</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="product-dynamics-detail.html?id=about-company" class="hover:text-white">公司简介</a></li>
+          <li><a href="product-dynamics-detail.html?id=about-news" class="hover:text-white">新闻动态</a></li>
+          <li><a href="product-dynamics-detail.html?id=about-contact" class="hover:text-white">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">产品服务</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="products.html" class="hover:text-white">云服务器 ECS</a></li>
+          <li><a href="products.html" class="hover:text-white">GPU 云服务器</a></li>
+          <li><a href="products.html" class="hover:text-white">云数据库 RDS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">帮助支持</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="product-dynamics-detail.html?id=support-help" class="hover:text-white">帮助中心</a></li>
+          <li><a href="product-dynamics-detail.html?id=support-api" class="hover:text-white">API 文档</a></li>
+          <li><a href="product-dynamics-detail.html?id=support-ticket" class="hover:text-white">提交工单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4">联系方式</h4>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fa-solid fa-phone mr-2"></i> 400-888-8888</li>
+          <li><i class="fa-solid fa-envelope mr-2"></i> support@yunjicloud.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-700 text-sm text-center">&copy; 2026 云极算力网络科技有限公司 版权所有</div>
+  </footer>
+  <script src="assets/js/nav-auth.js"></script>
+</body>
+</html>

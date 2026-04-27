@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>云极算力 - 高性能云服务器与GPU租赁</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body
+    class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col"
+  >
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center">
+              <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
+              <span class="font-bold text-xl tracking-wider text-gray-900"
+                >云极算力</span
+              >
+            </a>
+            <div class="hidden md:ml-10 md:flex md:space-x-8">
+              <a
+                href="index.html"
+                class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >首页</a
+              >
+              <a
+                href="products.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >产品购买</a
+              >
+              <a
+                href="product-dynamics.html#solution"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >解决方案</a
+              >
+              <a
+                href="developer-community.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >开发者社区</a
+              >
+              <a
+                href="product-dynamics.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >产品动态</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="console.html"
+              class="text-sm font-medium text-gray-500 hover:text-primary"
+              >控制台</a
+            >
+            <a
+              href="auth.html"
+              class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm"
+              >登录 / 注册</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col relative">
+      <section class="relative bg-white pt-16 pb-40 overflow-hidden">
+        <div
+          class="absolute top-10 left-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob"
+        ></div>
+        <div
+          class="absolute top-10 right-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000"
+        ></div>
+        <div
+          class="absolute -bottom-8 left-1/3 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-4000"
+        ></div>
+
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center"
+        >
+          <h1
+            class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 leading-tight"
+          >
+            强大的
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600"
+              >一站式 AI 云平台</span
+            >，<br class="hidden md:block" />满足您的一切需求
+          </h1>
+          <p
+            class="text-lg md:text-xl text-gray-500 mb-8 max-w-3xl leading-relaxed"
+          >
+            为塑造未来的
+            <span class="text-primary font-medium">AI 开发者</span> 和安全扩展
+            AI 的
+            <span class="text-primary font-medium">企业</span>
+            而生。<br />以无与伦比的速度、智能和经济性重新定义云端算力。
+          </p>
+
+          <div class="w-full max-w-3xl mx-auto mb-8 relative">
+            <form
+              action="products.html"
+              class="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-lg focus-within:ring-2 ring-primary/20 focus-within:border-primary transition duration-300 h-14"
+            >
+              <div class="pl-4 text-gray-400">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <input
+                name="q"
+                type="text"
+                class="w-full px-4 py-3 outline-none text-gray-700 placeholder-gray-400 bg-transparent"
+                placeholder="搜索产品名称，如：云服务器 ECS"
+              />
+              <button
+                class="bg-primary hover:bg-primary-hover text-white px-8 h-full font-medium transition whitespace-nowrap flex-shrink-0 inline-flex items-center justify-center"
+                type="submit"
+              >
+                搜索
+              </button>
+            </form>
+            <div
+              class="mt-3 text-sm text-gray-500 flex justify-start sm:justify-center items-center space-x-4 overflow-x-auto whitespace-nowrap pb-2"
+            >
+              <span class="text-red-500 flex items-center font-medium"
+                ><i class="fa-solid fa-fire mr-1"></i> 热搜产品:</span
+              >
+              <a href="products.html" class="hover:text-primary transition"
+                >云服务器</a
+              >
+
+              <a href="products.html" class="hover:text-primary transition"
+                >轻量应用服务器</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <a
+              href="products.html"
+              class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded flex items-center justify-center transition duration-300 shadow-md"
+              >免费开始使用
+              <i
+                class="fa-solid fa-arrow-up-right-from-square ml-2 text-sm opacity-80"
+              ></i
+            ></a>
+          </div>
+
+          <div
+            class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-600"
+          >
+            <span class="flex items-center"
+              ><i class="fa-solid fa-check text-blue-500 mr-1.5"></i> 80+
+              云产品</span
+            >
+            <span class="flex items-center"
+              ><i class="fa-solid fa-check text-blue-500 mr-1.5"></i> 7000万 AI
+              tokens</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mt-24 mb-16 w-full"
+      >
+        <div
+          class="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] flex flex-col md:flex-row overflow-hidden border border-gray-100"
+        >
+          <div
+            class="w-full md:w-1/3 xl:w-1/4 bg-gradient-to-b from-blue-500 to-blue-700 p-8 text-white flex flex-col justify-between relative overflow-hidden"
+          >
+            <i
+              class="fa-solid fa-cube absolute -bottom-10 -right-10 text-9xl text-white opacity-10 transform rotate-12"
+            ></i>
+            <div class="relative z-10">
+              <div class="flex items-center space-x-2 mb-2">
+                <i class="fa-solid fa-gift text-xl"></i>
+                <h3 class="text-xl font-bold tracking-wider">免费试用中心</h3>
+              </div>
+              <div
+                class="bg-blue-600 text-xs inline-block px-2 py-0.5 rounded mb-4 font-medium border border-blue-400"
+              >
+                2026 年 第1期
+              </div>
+              <p class="text-blue-100 text-sm mb-8 leading-relaxed">
+                60+款免费云产品，服务器最长体验3个月，助力您的业务轻松腾飞。
+              </p>
+              <a
+                href="products.html"
+                class="inline-block bg-white text-primary hover:bg-gray-50 font-bold py-2 px-6 rounded text-sm transition shadow"
+                >立即前往</a
+              >
+            </div>
+          </div>
+
+          <div class="w-full md:w-2/3 xl:w-3/4 p-6 sm:p-8 bg-white">
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center border-l-4 border-primary pl-3">
+                <h3 class="text-lg font-bold text-gray-900">热门产品</h3>
+              </div>
+              <a
+                href="products.html"
+                class="text-sm text-gray-500 hover:text-primary transition"
+                >查看更多 <i class="fa-solid fa-angle-right"></i
+              ></a>
+            </div>
+
+            <div
+              id="home-hot-products"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6"
+            ></div>
+
+            <div
+              class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm"
+            >
+              <div class="flex items-center text-gray-600 truncate pr-4">
+                <span
+                  class="font-bold text-primary mr-3 border-r border-gray-300 pr-3"
+                  >产品动态</span
+                >
+                <span
+                  class="border border-red-200 text-red-500 px-1 text-xs rounded mr-2 flex-shrink-0"
+                  >价格变更</span
+                >
+                <span class="truncate"
+                  >全球应用加速 - GA 2.0新增亚太、中东、南非地域节点</span
+                >
+              </div>
+              <a
+                href="products.html"
+                class="text-primary hover:text-blue-800 flex-shrink-0 whitespace-nowrap"
+                >查看更多</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+              系统架构与核心特性
+            </h2>
+            <div class="w-16 h-1 bg-primary mx-auto mt-6 rounded"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div
+              class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group"
+            >
+              <div
+                class="w-14 h-14 bg-blue-50 group-hover:bg-primary group-hover:text-white text-primary rounded-xl flex items-center justify-center text-2xl mb-6 transition-colors"
+              >
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3 text-gray-900">
+                虚拟化计算资源池
+              </h3>
+              <p class="text-gray-500 leading-relaxed">
+                基于底层硬件虚拟化技术，实现对 CPU
+                与内存资源的动态划分与调度，为不同算力需求提供相互独立的运行环境与资源隔离。
+              </p>
+            </div>
+            <div
+              class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group"
+            >
+              <div
+                class="w-14 h-14 bg-green-50 group-hover:bg-green-500 group-hover:text-white text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6 transition-colors"
+              >
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3 text-gray-900">
+                网络隔离与存储架构
+              </h3>
+              <p class="text-gray-500 leading-relaxed">
+                通过逻辑隔离构建虚拟私有网络（VPC）划分不同子网，搭配分布式块存储逻辑，保障系统在多租户环境下的数据安全性。
+              </p>
+            </div>
+            <div
+              class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group"
+            >
+              <div
+                class="w-14 h-14 bg-purple-50 group-hover:bg-purple-500 group-hover:text-white text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 transition-colors"
+              >
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3 text-gray-900">
+                生命周期与计费管理
+              </h3>
+              <p class="text-gray-500 leading-relaxed">
+                实现从实例创建、运行监控到资源释放的完整生命周期管理。同时结合系统时钟，提供包月及按量两套标准化的资源计费估算模型。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="bg-gray-800 text-gray-300 py-10 mt-auto">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8"
+      >
+        <div>
+          <h4 class="text-white font-bold mb-4">关于我们</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="product-dynamics-detail.html?id=about-company" class="hover:text-white">公司简介</a>
+            </li>
+            <li>
+              <a href="product-dynamics-detail.html?id=about-news" class="hover:text-white">新闻动态</a>
+            </li>
+            <li>
+              <a href="product-dynamics-detail.html?id=about-contact" class="hover:text-white">联系我们</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4">产品服务</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="products.html" class="hover:text-white">云服务器 ECS</a>
+            </li>
+            <li>
+              <a href="products.html" class="hover:text-white">GPU 云服务器</a>
+            </li>
+            <li>
+              <a href="products.html" class="hover:text-white">云数据库 RDS</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4">帮助支持</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="product-dynamics-detail.html?id=support-help" class="hover:text-white">帮助中心</a>
+            </li>
+            <li>
+              <a href="product-dynamics-detail.html?id=support-api" class="hover:text-white">API 文档</a>
+            </li>
+            <li>
+              <a href="product-dynamics-detail.html?id=support-ticket" class="hover:text-white">提交工单</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4">联系方式</h4>
+          <ul class="space-y-2 text-sm">
+            <li><i class="fa-solid fa-phone mr-2"></i> 400-888-8888</li>
+            <li>
+              <i class="fa-solid fa-envelope mr-2"></i> support@yunjicloud.com
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-700 text-sm text-center"
+      >
+        &copy; 2026 云极算力网络科技有限公司 版权所有
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/config/products.config.js?v=20260427-1"></script>
+    <script src="assets/js/home.js?v=20260427-1"></script>
+    <script src="assets/js/nav-auth.js"></script>
+</body>
+</html>

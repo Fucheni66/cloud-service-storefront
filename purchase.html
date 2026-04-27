@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义配置 - 云极算力</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0 flex items-center">
+            <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
+            <span class="font-bold text-xl tracking-wider text-gray-900">云极算力</span>
+          </a>
+          <div class="hidden md:ml-10 md:flex md:space-x-8">
+            <a href="index.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+            <a href="products.html" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品购买</a>
+            <a href="product-dynamics.html#solution" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">解决方案</a>
+            <a href="developer-community.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">开发者社区</a>
+            <a href="product-dynamics.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品动态</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="console.html" class="text-sm font-medium text-gray-500 hover:text-primary">控制台</a>
+          <a href="auth.html" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm">登录 / 注册</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow w-full bg-bg-gray pb-32" id="purchase-form">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="mb-4 flex items-center text-sm text-gray-500">
+        <a href="products.html" class="hover:text-primary transition flex items-center">
+          <i class="fa-solid fa-arrow-left mr-2"></i> 返回实例列表
+        </a>
+        <span class="mx-3">|</span>
+        <span class="text-gray-900 font-medium">自定义配置详情</span>
+      </div>
+
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">自定义配置实例</h2>
+
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <section class="flex flex-col md:flex-row border-b border-gray-100 p-6 gap-4 md:gap-0">
+          <div class="w-24 text-gray-500 font-medium pt-2">计费模式</div>
+          <div class="flex flex-wrap gap-4 flex-1">
+            <div class="option-btn active relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="billing" data-value="monthly">
+              包年包月
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="billing" data-value="hourly">
+              按量计费
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+          </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row border-b border-gray-100 p-6 gap-4 md:gap-0">
+          <div class="w-24 text-gray-500 font-medium pt-2">地域</div>
+          <div class="flex flex-wrap gap-4 flex-1">
+            <div class="option-btn active relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="region" data-value="beijing">
+              华北2 (北京)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="region" data-value="shanghai">
+              华东2 (上海)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="region" data-value="guangzhou">
+              华南1 (广州)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="region" data-value="singapore">
+              亚太 (新加坡)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+          </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row border-b border-gray-100 p-6 gap-4 md:gap-0">
+          <div class="w-24 text-gray-500 font-medium pt-2">实例规格</div>
+          <div class="flex-1">
+            <div class="flex space-x-2 mb-4 bg-gray-50 p-1 rounded inline-flex">
+              <button type="button" class="instance-tab px-4 py-1 rounded bg-white shadow-sm text-primary font-medium text-sm transition" data-instance-tab="cpu">通用型 (CPU)</button>
+              <button type="button" class="instance-tab px-4 py-1 rounded text-gray-600 hover:text-primary text-sm transition" data-instance-tab="gpu">异构计算 (GPU)</button>
+            </div>
+
+            <div id="cpu-instances" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="option-btn active relative border border-gray-300 rounded p-4 cursor-pointer hover:border-primary flex flex-col" data-group="instance" data-value="2c4g">
+                <div class="font-bold text-gray-900 text-lg mb-1">2核 4G</div>
+                <div class="text-sm text-gray-500">通用型 g7 | 适合中小型网站</div>
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+              <div class="option-btn relative border border-gray-300 rounded p-4 cursor-pointer hover:border-primary flex flex-col" data-group="instance" data-value="4c8g">
+                <div class="font-bold text-gray-900 text-lg mb-1">4核 8G</div>
+                <div class="text-sm text-gray-500">通用型 g7 | 适合数据库/大流量</div>
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+              <div class="option-btn relative border border-gray-300 rounded p-4 cursor-pointer hover:border-primary flex flex-col" data-group="instance" data-value="8c16g">
+                <div class="font-bold text-gray-900 text-lg mb-1">8核 16G</div>
+                <div class="text-sm text-gray-500">计算型 c7 | 企业级应用首选</div>
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+            </div>
+
+            <div id="gpu-instances" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 hidden">
+              <div class="option-btn relative border border-gray-300 rounded p-4 cursor-pointer hover:border-primary flex flex-col" data-group="instance" data-value="gpu_t4">
+                <div class="font-bold text-gray-900 text-lg mb-1">4核 16G + 1*T4</div>
+                <div class="text-sm text-gray-500">NVIDIA T4 16GB | 推理/图形</div>
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+              <div class="option-btn relative border border-gray-300 rounded p-4 cursor-pointer hover:border-primary flex flex-col" data-group="instance" data-value="gpu_a100">
+                <div class="font-bold text-gray-900 text-lg mb-1">12核 96G + 1*A100</div>
+                <div class="text-sm text-gray-500">NVIDIA A100 40GB | 深度学习</div>
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row border-b border-gray-100 p-6 gap-4 md:gap-0">
+          <div class="w-24 text-gray-500 font-medium pt-2">操作系统</div>
+          <div class="flex flex-wrap gap-4 flex-1">
+            <div class="option-btn active relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary flex items-center" data-group="os" data-value="ubuntu">
+              <i class="fa-brands fa-ubuntu text-orange-500 mr-2"></i> Ubuntu 22.04 LTS
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary flex items-center" data-group="os" data-value="centos">
+              <i class="fa-brands fa-centos text-purple-600 mr-2"></i> CentOS 7.9
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary flex items-center" data-group="os" data-value="windows">
+              <i class="fa-brands fa-windows text-blue-500 mr-2"></i> Windows Server 2022
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+          </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row border-b border-gray-100 p-6 gap-4 md:gap-0">
+          <div class="w-24 text-gray-500 font-medium pt-2">系统盘</div>
+          <div class="flex flex-col flex-1 space-y-4">
+            <div class="flex flex-wrap gap-4">
+              <div class="option-btn active relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="diskType" data-value="ssd">
+                通用型SSD
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+              <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="diskType" data-value="essd">
+                极速型ESSD
+                <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <input type="range" id="diskSize" min="40" max="500" step="10" value="40" class="w-full sm:w-64 accent-primary">
+              <div class="flex items-center border border-gray-300 rounded px-3 py-1 w-fit bg-white">
+                <input type="number" id="diskSizeInput" value="40" min="40" max="500" class="w-16 outline-none text-center">
+                <span class="text-gray-500 ml-1">GB</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="duration-container" class="flex flex-col md:flex-row p-6 gap-4 md:gap-0">
+          <div class="w-24 text-gray-500 font-medium pt-2">购买时长</div>
+          <div class="flex flex-wrap gap-4 flex-1">
+            <div class="option-btn active relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="duration" data-value="1">
+              1个月
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="duration" data-value="3">
+              3个月 (9折)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="duration" data-value="6">
+              6个月 (8.5折)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+            <div class="option-btn relative border border-gray-300 rounded px-6 py-2 cursor-pointer hover:border-primary" data-group="duration" data-value="12">
+              1年 (8折)
+              <i class="fa-solid fa-check check-icon hidden absolute bottom-0 right-0 text-[8px] text-white m-[2px]"></i>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-gray-200 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between sm:items-center">
+        <div class="flex flex-col">
+          <div class="text-sm text-gray-500 mb-1">配置费用：<span id="summary-text">包年包月, 华北2, 2核 4G, 40G SSD</span></div>
+          <div class="text-3xl font-bold text-[#FF6A00]"><span class="text-xl">¥</span> <span id="total-price">88.00</span></div>
+        </div>
+        <button id="showBuyModal" type="button" class="bg-primary hover:bg-primary-hover text-white text-lg font-bold py-3 px-12 rounded shadow transition duration-200">
+          立即购买
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div id="buy-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center transition-opacity px-4">
+    <div class="bg-white rounded-lg w-full max-w-3xl overflow-hidden shadow-2xl transform transition-all">
+      <div class="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+        <div>
+          <h3 class="text-xl font-bold text-gray-900">订单支付</h3>
+          <p class="text-sm text-gray-500 mt-1">确认配置后使用支付宝扫码完成支付</p>
+        </div>
+        <button type="button" data-close-modal class="w-9 h-9 rounded hover:bg-gray-100 text-gray-500 transition" aria-label="关闭">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 grid grid-cols-1 md:grid-cols-[1fr_260px] gap-6">
+        <div class="space-y-4">
+          <div class="border border-gray-200 rounded p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <div class="text-sm text-gray-500">支付金额</div>
+                <div class="text-3xl font-bold text-[#FF6A00] mt-1">¥<span id="modal-price"></span></div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm text-gray-500">订单编号</div>
+                <div id="modal-order-id" class="text-sm font-mono text-gray-900 mt-1"></div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-100 rounded p-4 text-sm text-gray-600" id="modal-summary"></div>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="flex items-center justify-between border border-primary bg-blue-50 rounded px-3 py-2">
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-900">
+                  <i class="fa-brands fa-alipay text-primary text-lg"></i>
+                  <span>支付宝</span>
+                </div>
+                <i class="fa-solid fa-check text-primary text-sm"></i>
+              </div>
+              <div class="flex items-center justify-between border border-gray-200 bg-gray-50 rounded px-3 py-2 text-gray-400 cursor-not-allowed opacity-70" aria-disabled="true">
+                <div class="flex items-center gap-2 text-sm font-medium">
+                  <i class="fa-brands fa-weixin text-lg"></i>
+                  <span>微信</span>
+                </div>
+                <span class="text-xs">暂不可用</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded p-4">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <div class="text-sm font-medium text-gray-900">支付状态</div>
+                <div id="payment-status-text" class="text-sm text-gray-500 mt-1">等待生成支付二维码</div>
+              </div>
+              <div id="payment-status-loading" class="hidden items-center gap-2 text-primary text-sm whitespace-nowrap">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <span>查询中</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded p-4 flex flex-col items-center">
+          <div id="payment-qr-box" class="w-48 h-48 border border-dashed border-gray-300 rounded bg-gray-50 flex flex-col items-center justify-center text-gray-400">
+            <i class="fa-solid fa-qrcode text-5xl mb-3"></i>
+            <span class="text-sm">等待生成二维码</span>
+          </div>
+          <div id="payment-qr-tip" class="text-sm text-gray-500 text-center mt-4">打开弹窗后自动生成支付二维码。</div>
+          <button type="button" id="createPaymentButton" class="mt-5 w-full bg-primary hover:bg-primary-hover text-white font-medium py-2 px-4 rounded transition">重新生成二维码</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/config/purchase.config.js"></script>
+  <script src="assets/js/config/payment.config.js"></script>
+  <script src="assets/js/app.js?v=20260428-1"></script>
+  <script src="assets/js/nav-auth.js"></script>
+</body>
+</html>

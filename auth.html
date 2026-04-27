@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 / 注册 - 云极算力</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body
+    class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col"
+  >
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center">
+              <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
+              <span class="font-bold text-xl tracking-wider text-gray-900"
+                >云极算力</span
+              >
+            </a>
+            <div class="hidden md:ml-10 md:flex md:space-x-8">
+              <a
+                href="index.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >首页</a
+              >
+              <a
+                href="products.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >产品购买</a
+              >
+              <a
+                href="product-dynamics.html#solution"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >解决方案</a
+              >
+              <a
+                href="developer-community.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >开发者社区</a
+              >
+              <a
+                href="product-dynamics.html"
+                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >产品动态</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="console.html"
+              class="text-sm font-medium text-gray-500 hover:text-primary"
+              >控制台</a
+            >
+            <a
+              href="auth.html"
+              class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm"
+              >登录 / 注册</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-12">
+      <section
+        class="w-full max-w-md bg-white border border-gray-200 rounded-xl shadow-sm p-6"
+      >
+        <div class="mb-6">
+          <h1 id="auth-title" class="text-2xl font-bold text-gray-900">
+            登录账号
+          </h1>
+          <p id="auth-subtitle" class="text-sm text-gray-500 mt-2">
+            进入控制台管理你的云服务。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 bg-gray-100 rounded p-1 mb-5">
+          <button
+            type="button"
+            data-auth-tab="login"
+            class="auth-tab bg-white text-primary shadow-sm rounded py-2 text-sm font-medium transition"
+          >
+            登录
+          </button>
+          <button
+            type="button"
+            data-auth-tab="register"
+            class="auth-tab text-gray-600 rounded py-2 text-sm font-medium transition"
+          >
+            注册
+          </button>
+        </div>
+
+        <div
+          id="auth-message"
+          class="hidden mb-4 rounded border px-3 py-2 text-sm"
+        ></div>
+
+        <form id="login-form" data-auth-panel="login" class="space-y-4">
+          <div>
+            <label
+              for="login-email"
+              class="block text-sm font-medium text-gray-700 mb-2"
+              >邮箱</label
+            >
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div>
+            <label
+              for="login-password"
+              class="block text-sm font-medium text-gray-700 mb-2"
+              >密码</label
+            >
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              class="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+              placeholder="请输入密码"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary hover:bg-primary-hover text-white rounded py-2.5 text-sm font-medium transition"
+          >
+            登录
+          </button>
+
+          <!-- Google Identity Services 官方登录按钮渲染到这个容器里。 -->
+          <div
+            id="google-login-button"
+            class="w-full min-h-[44px] flex justify-center"
+          ></div>
+        </form>
+
+        <form
+          id="register-form"
+          data-auth-panel="register"
+          class="hidden space-y-4"
+        >
+          <div>
+            <label
+              for="register-email"
+              class="block text-sm font-medium text-gray-700 mb-2"
+              >邮箱</label
+            >
+            <input
+              id="register-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div>
+            <label
+              for="register-password"
+              class="block text-sm font-medium text-gray-700 mb-2"
+              >密码</label
+            >
+            <input
+              id="register-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required
+              minlength="6"
+              class="w-full border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+              placeholder="至少 6 位密码"
+            />
+          </div>
+
+          <div>
+            <label
+              for="register-code"
+              class="block text-sm font-medium text-gray-700 mb-2"
+              >验证码</label
+            >
+            <div class="flex gap-2">
+              <input
+                id="register-code"
+                name="code"
+                type="text"
+                inputmode="numeric"
+                required
+                class="flex-1 min-w-0 border border-gray-300 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+                placeholder="请输入验证码"
+              />
+              <button
+                id="send-code-button"
+                type="button"
+                class="w-28 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 rounded px-3 py-2.5 text-sm font-medium transition"
+              >
+                获取验证码
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary hover:bg-primary-hover text-white rounded py-2.5 text-sm font-medium transition"
+          >
+            注册
+          </button>
+        </form>
+
+        <div class="mt-5 text-center text-sm text-gray-500">
+          <span id="auth-switch-text">还没有账号？</span>
+          <button
+            type="button"
+            id="auth-switch-button"
+            class="text-primary hover:text-primary-hover font-medium"
+          >
+            立即注册
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const tabs = document.querySelectorAll("[data-auth-tab]");
+        const panels = document.querySelectorAll("[data-auth-panel]");
+        const title = document.getElementById("auth-title");
+        const subtitle = document.getElementById("auth-subtitle");
+        const message = document.getElementById("auth-message");
+        const switchText = document.getElementById("auth-switch-text");
+        const switchButton = document.getElementById("auth-switch-button");
+        const sendCodeButton = document.getElementById("send-code-button");
+        let currentMode = "login";
+        let codeTimer = null;
+        let codeSeconds = 0;
+
+        function showMessage(text, type) {
+          message.textContent = text;
+          message.className =
+            "mb-4 rounded border px-3 py-2 text-sm " +
+            (type === "success"
+              ? "bg-green-50 border-green-100 text-green-700"
+              : "bg-blue-50 border-blue-100 text-primary");
+        }
+
+        function setMode(mode) {
+          currentMode = mode === "register" ? "register" : "login";
+          window.location.hash = currentMode;
+          message.classList.add("hidden");
+
+          tabs.forEach(function (tab) {
+            const isActive = tab.dataset.authTab === currentMode;
+            tab.classList.toggle("bg-white", isActive);
+            tab.classList.toggle("text-primary", isActive);
+            tab.classList.toggle("shadow-sm", isActive);
+            tab.classList.toggle("text-gray-600", !isActive);
+          });
+
+          panels.forEach(function (panel) {
+            panel.classList.toggle(
+              "hidden",
+              panel.dataset.authPanel !== currentMode,
+            );
+          });
+
+          if (currentMode === "register") {
+            title.textContent = "注册账号";
+            subtitle.textContent = "创建账号后即可购买和管理云服务。";
+            switchText.textContent = "已有账号？";
+            switchButton.textContent = "立即登录";
+          } else {
+            title.textContent = "登录账号";
+            subtitle.textContent = "进入控制台管理你的云服务。";
+            switchText.textContent = "还没有账号？";
+            switchButton.textContent = "立即注册";
+          }
+        }
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            setMode(tab.dataset.authTab);
+          });
+        });
+
+        switchButton.addEventListener("click", function () {
+          setMode(currentMode === "login" ? "register" : "login");
+        });
+
+        sendCodeButton.addEventListener("click", function () {
+          if (codeTimer) {
+            return;
+          }
+
+          codeSeconds = 60;
+          sendCodeButton.disabled = true;
+          sendCodeButton.classList.add("text-gray-400", "cursor-not-allowed");
+          showMessage("验证码已发送。", "info");
+
+          codeTimer = window.setInterval(function () {
+            codeSeconds -= 1;
+            sendCodeButton.textContent = codeSeconds + "s";
+            if (codeSeconds <= 0) {
+              window.clearInterval(codeTimer);
+              codeTimer = null;
+              sendCodeButton.disabled = false;
+              sendCodeButton.textContent = "获取验证码";
+              sendCodeButton.classList.remove(
+                "text-gray-400",
+                "cursor-not-allowed",
+              );
+            }
+          }, 1000);
+        });
+
+        document
+          .getElementById("login-form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            showMessage("登录成功。", "success");
+          });
+
+        document
+          .getElementById("register-form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            showMessage("注册成功。", "success");
+          });
+
+        setMode(
+          window.location.hash.replace("#", "") === "register"
+            ? "register"
+            : "login",
+        );
+        window.addEventListener("hashchange", function () {
+          setMode(
+            window.location.hash.replace("#", "") === "register"
+              ? "register"
+              : "login",
+          );
+        });
+      })();
+    </script>
+    <!-- 认证配置：前端 Google Client ID、后端 API 地址、登录成功默认跳转页。 -->
+    <script src="assets/js/config/auth.config.js"></script>
+    <!-- Google 官方 Identity Services SDK，负责弹出 Google 登录并返回 credential。 -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- 登录页逻辑：接收 Google credential，提交后端验证，并写入 localStorage。 -->
+    <script src="assets/js/auth.js"></script>
+    <!-- 公共导航登录态：登录后把“登录 / 注册”替换成头像/name 下拉菜单。 -->
+    <script src="assets/js/nav-auth.js"></script>
+  </body>
+</html>
