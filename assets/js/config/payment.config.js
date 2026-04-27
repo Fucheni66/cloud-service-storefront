@@ -4,5 +4,5 @@ window.PAYMENT_API_CONFIG = {
   createPayment: '/alipay/create',
   queryPayment: '/alipay/query',
   createQrCode: '/qrcode',
-  successPage: '/payment-success.html',
+  successPage: 'payment-success.html',
 };
