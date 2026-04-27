@@ -1,24 +1,26 @@
 // 登录认证配置，用于邮箱登录注册和 Google OAuth 登录。
 window.AUTH_CONFIG = {
-  // 后端 PHP 服务地址，服务器已把 API 作为运行目录，不需要再拼接 /api。
-  apiBaseUrl: 'http://ajou.userapi.cn/',
+  // 后端 PHP 服务地址，服务器已把 api 目录作为运行目录，接口直接访问 .php 文件。
+  apiBaseUrl: 'https://ajou.userapi.cn/',
   // 没有 redirect 参数时，登录成功默认进入控制台。
   loginSuccessPage: 'console.html',
   email: {
-    codePath: '/auth/code',
-    registerPath: '/auth/register',
-    loginPath: '/auth/login',
+    codePath: '/auth_code.php',
+    registerPath: '/auth_register.php',
+    loginPath: '/auth_login.php',
   },
-  purchasesPath: '/purchases',
+  purchasesPath: '/purchases.php',
   google: {
     // Google Cloud 创建的 OAuth Web Client ID，前端初始化 Google 按钮必须使用。
     clientId: '203242566561-jp41htf16rca7cr5l5kusio7tubdoton.apps.googleusercontent.com',
     // 后端 Google 登录 API 路径，后端会验证 ID Token 后返回本地登录信息。
-    loginPath: '/auth/google',
+    loginPath: '/google_login.php',
     // Google Cloud 控制台里配置的本地开发来源，方便对照排查授权来源错误。
     authorizedOrigins: [
       'http://127.0.0.1:8887',
-      'http://localhost:8887'
+      'http://localhost:8887',
+      'https://fucheni66.github.io',
+      'https://ajou.userapi.cn'
     ]
   }
 };
