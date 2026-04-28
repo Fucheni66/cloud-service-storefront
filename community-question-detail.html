@@ -4,35 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>问答详情 - AJOU</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/vendor/tailwindcss-cdn.js?v=20260428-1"></script>
   <script src="assets/js/tailwind-config.js?v=20260428-3"></script>
+  <script src="assets/js/vendor/jquery-3.7.1.min.js?v=20260428-1"></script>
+  <script src="assets/js/layout.js?v=20260428-1"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260428-3">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260428-5">
 </head>
 <body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <a href="index.html" class="flex-shrink-0 flex items-center">
-            <i class="fa-solid fa-cloud text-primary text-2xl mr-2"></i>
-            <span class="font-bold text-xl tracking-wider text-gray-900">AJOU</span>
-          </a>
-          <div class="hidden md:ml-10 md:flex md:space-x-8">
-            <a href="index.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
-            <a href="products.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品购买</a>
-            <a href="product-dynamics.html#solution" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">解决方案</a>
-            <a href="developer-community.html" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">开发者社区</a>
-            <a href="product-dynamics.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">产品动态</a>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4">
-          <a href="console.html" class="text-sm font-medium text-gray-500 hover:text-primary">控制台</a>
-          <a href="auth.html" class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm transition-colors shadow-sm">登录 / 注册</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <div id="site-header"></div>
 
   <main class="flex-grow bg-bg-gray pb-16">
     <section class="bg-white border-b border-gray-200">
@@ -208,43 +188,7 @@
     </section>
   </main>
 
-  <footer id="footer" class="bg-gray-800 text-gray-300 py-10 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h4 class="text-white font-bold mb-4">关于我们</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="product-dynamics-detail.html?id=about-company" class="hover:text-white">公司简介</a></li>
-          <li><a href="product-dynamics-detail.html?id=about-news" class="hover:text-white">新闻动态</a></li>
-          <li><a href="product-dynamics-detail.html?id=about-contact" class="hover:text-white">联系我们</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-bold mb-4">产品服务</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="products.html" class="hover:text-white">云服务器 ECS</a></li>
-          <li><a href="products.html" class="hover:text-white">GPU 云服务器</a></li>
-          <li><a href="products.html" class="hover:text-white">云数据库 RDS</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-bold mb-4">帮助支持</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="product-dynamics-detail.html?id=support-help" class="hover:text-white">帮助中心</a></li>
-          <li><a href="product-dynamics-detail.html?id=support-api" class="hover:text-white">API 文档</a></li>
-          <li><a href="product-dynamics-detail.html?id=support-ticket" class="hover:text-white">提交工单</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-bold mb-4">联系方式</h4>
-        <ul class="space-y-2 text-sm">
-          <li><i class="fa-solid fa-phone mr-2"></i> 400-888-8888</li>
-          <li><i class="fa-solid fa-envelope mr-2"></i> fucheni0721@gmail.com</li>
-        </ul>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-700 text-sm text-center">&copy; 2026 Ajou yanbo</div>
-  </footer>
-
+  <div id="site-footer"></div>
   <script>
     (function () {
       const params = new URLSearchParams(window.location.search);

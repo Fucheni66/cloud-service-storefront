@@ -26,7 +26,7 @@
 - CSS
 - JavaScript
 - jQuery
-- Tailwind CDN
+- Tailwind CSS 本地脚本
 - Font Awesome
 - Google Identity Services
 - localStorage
@@ -35,26 +35,47 @@
 
 ```text
 .
-├── *.html
-├── assets
-│   ├── css
-│   │   └── styles.css
-│   └── js
-│       ├── app.js
-│       ├── auth.js
-│       ├── console.js
-│       ├── console-manage.js
-│       ├── home.js
-│       ├── nav-auth.js
-│       ├── products.js
-│       ├── require-auth.js
-│       └── config
-│           ├── auth.config.js
-│           ├── console.config.js
-│           ├── payment.config.js
-│           ├── products.config.js
-│           └── purchase.config.js
-└── README.md
+├── index.html                         # 首页，展示搜索栏、热门产品和平台介绍
+├── products.html                      # 产品购买列表页，展示云服务器和 GPU 实例
+├── purchase.html                      # 自定义配置购买页，选择规格、地域、系统盘和计费方式
+├── console.html                       # 用户控制台页面，展示已购买云服务列表
+├── console-manage.html                # 云服务管理页面，展示监控、网络、费用和操作入口
+├── auth.html                          # 登录 / 注册页面，支持邮箱登录注册和 Google 登录
+├── developer-community.html           # 开发者社区首页，展示教程、问答和发布入口
+├── community-publish.html             # 社区发表页面，用于发布内容
+├── community-question-detail.html     # 社区问答详情页面，展示问题和评论区回复
+├── product-dynamics.html              # 产品动态页面，包含新品、价格、维护、解决方案等分类
+├── product-dynamics-detail.html       # 产品动态详情页，按参数展示不同文章内容
+├── payment-success.html               # 支付成功页面，提示资源分配中或分配完成
+├── assets                             # 前端静态资源目录
+│   ├── css                            # 样式文件目录
+│   │   └── styles.css                 # 全站公共样式和组件样式
+│   └── js                             # JavaScript 脚本目录
+│       ├── app.js                     # 购买配置页逻辑，包含价格计算、支付弹窗和支付轮询
+│       ├── auth.js                    # 登录注册逻辑，处理邮箱登录注册和 Google 登录回调
+│       ├── console.js                 # 控制台列表渲染逻辑，读取并展示用户购买内容
+│       ├── console-manage.js          # 云服务管理页渲染逻辑
+│       ├── home.js                    # 首页热门产品渲染逻辑
+│       ├── layout.js                  # 使用 jQuery 加载公共头部和底部模板
+│       ├── nav-auth.js                # 导航栏登录态渲染和退出登录逻辑
+│       ├── products.js                # 产品列表页渲染和分类切换逻辑
+│       ├── require-auth.js            # 页面登录保护逻辑，未登录时跳转登录页
+│       ├── tailwind-config.js         # Tailwind 本地脚本主题配置
+│       ├── vendor                     # 前端第三方本地脚本目录
+│       │   ├── jquery-3.7.1.min.js    # 本地化后的 jQuery 脚本
+│       │   └── tailwindcss-cdn.js     # 本地化后的 Tailwind CSS 运行脚本
+│       └── config                     # 页面配置文件目录
+│           ├── auth.config.js         # 登录接口和 Google 登录参数配置
+│           ├── console.config.js      # 控制台接口和默认配置
+│           ├── payment.config.js      # 支付、二维码和购买记录接口配置
+│           ├── products.config.js     # 产品列表和商品卡片配置
+│           └── purchase.config.js     # 购买页规格、价格、折扣和展示名称配置
+├── templates                          # 公共 HTML 模板目录
+│   ├── header.html                    # 公共页面头部导航模板
+│   └── footer.html                    # 公共页面底部信息模板
+├── reports                            # 项目报告和说明页面目录
+│   └── web_frontend_midterm_report.html # 前端项目报告页面
+└── README.md                          # 项目说明文档
 ```
 
 ## 页面数据配置
@@ -100,4 +121,3 @@ ajou_login_info
 ajou_auth_user
 ajou_auth_token
 ```
-

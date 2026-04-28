@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Web前端开发期中项目汇报报告</title>
+<style>
+body { font-family: "Songti SC", "SimSun", serif; line-height: 1.75; color: #111827; max-width: 900px; margin: 40px auto; }
+h1, h2, h3 { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; color: #0f172a; }
+h1 { text-align: center; font-size: 26px; margin-bottom: 24px; }
+h2 { font-size: 20px; border-bottom: 1px solid #d1d5db; padding-bottom: 6px; margin-top: 28px; }
+h3 { font-size: 17px; margin-top: 20px; }
+p { margin: 8px 0; }
+ul, ol { margin-top: 6px; }
+li { margin: 3px 0; }
+pre { background: #f3f4f6; padding: 12px; border-radius: 6px; white-space: pre-wrap; font-family: Consolas, monospace; }
+code { font-family: Consolas, monospace; background: #f3f4f6; padding: 1px 4px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d1d5db; padding: 7px 9px; text-align: left; }
+th { background: #eff6ff; }
+.toc { background: #f8fafc; border: 1px solid #dbeafe; border-radius: 8px; padding: 16px 18px; margin: 22px 0; }
+.toc h2 { border-bottom: none; margin: 0 0 10px; padding-bottom: 0; font-size: 18px; }
+.toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 36px; }
+.toc li { break-inside: avoid; margin: 4px 0; }
+.toc a { color: #2563eb; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.api-table { table-layout: fixed; font-size: 13px; }
+.api-table th, .api-table td { vertical-align: top; }
+.api-table .api-url { width: 22%; }
+.api-table .api-method { width: 8%; text-align: center; white-space: nowrap; }
+.api-table .api-params { width: 34%; line-height: 1.65; }
+.api-table .api-purpose { width: 36%; line-height: 1.65; }
+.api-table .api-url code { background: transparent; padding: 0; font-size: 10.5px; line-height: 1.45; word-break: break-all; }
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<h1>《Web 前端开发》期中项目汇报报告</h1>
+
+<p>项目名称：云服务商算力前端演示平台</p>
+<p>项目类型：云服务 / 服务器租赁类平台网站</p>
+<p>技术栈：HTML + CSS + JavaScript + jQuery + Tailwind CSS 本地脚本</p>
+<p>部署方式：GitHub Pages 前端托管</p>
+<p>小组成员：董衍波、施博格、蒋宝锐、张壹政</p>
+<p>托管网址：<a href="https://fucheni66.github.io/cloud-service-storefront/" target="_blank" rel="noopener">https://fucheni66.github.io/cloud-service-storefront/</a></p>
+<p>GitHub：<a href="https://github.com/Fucheni66/cloud-service-storefront" target="_blank" rel="noopener">https://github.com/Fucheni66/cloud-service-storefront</a></p>
+
+<nav class="toc">
+<h2>目录</h2>
+<ol>
+<li><a href="#section-1">一、项目整体介绍</a></li>
+<li><a href="#section-2">二、项目页面结构</a></li>
+<li><a href="#section-3">三、核心功能与技术点</a></li>
+<li><a href="#section-4">四、登录方案说明</a></li>
+<li><a href="#section-5">五、支付方案说明</a></li>
+<li><a href="#section-6">六、网页设计说明</a></li>
+<li><a href="#section-7">七、网站托管与运行方式</a></li>
+<li><a href="#section-8">八、创新点说明</a></li>
+<li><a href="#section-9">九、前端交互功能清单</a></li>
+<li><a href="#section-10">十、汇报提纲</a></li>
+<li><a href="#section-11">十一、汇报说明</a></li>
+</ol>
+</nav>
+
+<hr>
+
+<h2 id="section-1">一、项目整体介绍</h2>
+
+<p>本项目是一个面向云服务器购买与管理场景的平台类网站，整体参考云服务厂商的产品购买流程进行设计。网站围绕“浏览云服务产品、选择实例配置、完成支付、查看已购资源、管理云服务”这一主线展开。</p>
+
+<p>项目主要由以下几个方面组成：</p>
+
+<p>1. 首页展示模块：展示平台定位、搜索栏、热门产品、系统架构与核心特性。</p>
+<p>2. 产品列表模块：展示 CPU 云服务器和 GPU 云服务器，支持通过配置文件动态渲染产品数据。</p>
+<p>3. 自定义购买模块：支持用户选择实例规格、地域、操作系统、系统盘、计费方式和购买时长。</p>
+<p>4. 支付与订单模块：用户确认配置后生成订单，调用后端支付接口生成支付宝二维码。</p>
+<p>5. 登录认证模块：支持邮箱登录注册和 Google 登录，并将登录状态保存到浏览器本地。</p>
+<p>6. 控制台模块：登录后展示用户已购买的云服务，并提供云服务管理页面。</p>
+<p>7. 社区与产品动态模块：提供产品动态、API 文档、帮助支持、社区问答和发帖页面。</p>
+
+<p>项目不是单一静态页面，而是一个多页面、有流程、有状态、有数据交互的平台型网站。</p>
+
+<hr>
+
+<h2 id="section-2">二、项目页面结构</h2>
+
+<p>本项目包含 4 个以上页面，实际包含 12 个主要页面。</p>
+
+<table>
+<tr><th>页面</th><th>文件</th><th>作用</th></tr>
+<tr><td>首页</td><td>`index.html`</td><td>展示平台介绍、搜索栏、热门产品和系统架构</td></tr>
+<tr><td>产品列表页</td><td>`products.html`</td><td>展示 CPU / GPU 云服务器列表</td></tr>
+<tr><td>购买配置页</td><td>`purchase.html`</td><td>选择服务器配置、计算费用、生成支付二维码</td></tr>
+<tr><td>登录注册页</td><td>`auth.html`</td><td>邮箱登录注册、Google 登录</td></tr>
+<tr><td>控制台页</td><td>`console.html`</td><td>展示用户已购买的云服务</td></tr>
+<tr><td>云服务管理页</td><td>`console-manage.html`</td><td>展示单个云服务的监控、网络、账单和操作信息</td></tr>
+<tr><td>产品动态页</td><td>`product-dynamics.html`</td><td>展示产品发布、价格、维护、解决方案等栏目</td></tr>
+<tr><td>产品动态详情页</td><td>`product-dynamics-detail.html`</td><td>根据参数展示不同动态详情</td></tr>
+<tr><td>开发者社区页</td><td>`developer-community.html`</td><td>展示社区问题、文档入口和支持入口</td></tr>
+<tr><td>社区问题详情页</td><td>`community-question-detail.html`</td><td>展示问答详情并支持评论</td></tr>
+<tr><td>发帖页</td><td>`community-publish.html`</td><td>发布问题或经验分享</td></tr>
+<tr><td>支付成功页</td><td>`payment-success.html`</td><td>支付成功后展示订单结果并引导进入控制台</td></tr>
+</table>
+
+<p>页面之间形成完整流程：</p>
+
+<pre>
+首页 -&gt; 产品列表 -&gt; 购买配置 -&gt; 支付确认 -&gt; 支付成功 -&gt; 控制台 -&gt; 云服务管理
+</pre>
+
+<p>登录保护流程：</p>
+
+<pre>
+访问控制台 -&gt; 判断是否登录 -&gt; 未登录跳转 auth.html -&gt; 登录成功返回控制台
+</pre>
+
+<h3>项目目录结构</h3>
+
+<p>前端项目目录结构如下，只列出前端页面、静态资源、公共模板和项目说明文件，不包含后端目录和报告目录。</p>
+
+<pre>
+.
+├── .gitignore                         # Git 忽略配置，排除后端目录、临时文件等不需要提交的内容
+├── .nojekyll                          # GitHub Pages 配置文件，避免静态资源被 Jekyll 处理
+├── README.md                          # 项目说明文档
+├── index.html                         # 首页，展示搜索栏、热门产品和平台介绍
+├── products.html                      # 产品购买列表页，展示云服务器和 GPU 实例
+├── purchase.html                      # 自定义配置购买页，选择规格、地域、系统盘和计费方式
+├── console.html                       # 用户控制台页面，展示已购买云服务列表
+├── console-manage.html                # 云服务管理页面，展示监控、网络、费用和操作入口
+├── auth.html                          # 登录 / 注册页面，支持邮箱登录注册和 Google 登录
+├── developer-community.html           # 开发者社区首页，展示教程、问答和发布入口
+├── community-publish.html             # 社区发表页面，用于发布内容
+├── community-question-detail.html     # 社区问答详情页面，展示问题和评论区回复
+├── product-dynamics.html              # 产品动态页面，包含新品、价格、维护、解决方案等分类
+├── product-dynamics-detail.html       # 产品动态详情页，按参数展示不同文章内容
+├── payment-success.html               # 支付成功页面，提示资源分配中或分配完成
+├── assets                             # 前端静态资源目录
+│   ├── css                            # 样式文件目录
+│   │   └── styles.css                 # 全站公共样式、头部占位高度、公共导航和组件样式
+│   └── js                             # JavaScript 脚本目录
+│       ├── app.js                     # 购买配置页逻辑，包含价格计算、支付弹窗和支付轮询
+│       ├── auth.js                    # 登录注册逻辑，处理邮箱登录注册和 Google 登录回调
+│       ├── console.js                 # 控制台列表渲染逻辑，读取并展示用户购买内容
+│       ├── console-manage.js          # 云服务管理页渲染逻辑
+│       ├── home.js                    # 首页热门产品渲染逻辑
+│       ├── layout.js                  # 使用 jQuery 加载公共头部和底部 HTML 模板
+│       ├── nav-auth.js                # 使用 jQuery 渲染导航栏登录态和退出登录逻辑
+│       ├── products.js                # 产品列表页渲染和分类切换逻辑
+│       ├── require-auth.js            # 页面登录保护逻辑，未登录时跳转登录页
+│       ├── tailwind-config.js         # Tailwind 本地脚本主题配置
+│       ├── vendor                     # 前端第三方本地脚本目录
+│       │   ├── jquery-3.7.1.min.js    # 本地化后的 jQuery 脚本
+│       │   └── tailwindcss-cdn.js     # 本地化后的 Tailwind CSS 运行脚本
+│       └── config                     # 页面配置文件目录
+│           ├── auth.config.js         # 登录接口和 Google 登录参数配置
+│           ├── console.config.js      # 控制台接口和默认配置
+│           ├── payment.config.js      # 支付、二维码和购买记录接口配置
+│           ├── products.config.js     # 产品列表和商品卡片配置
+│           └── purchase.config.js     # 购买页规格、价格、折扣和展示名称配置
+└── templates                          # 公共 HTML 模板目录
+│   ├── header.html                    # 公共页面头部导航模板
+│   └── footer.html                    # 公共页面底部信息模板
+</pre>
+
+<h3>主要文件信息</h3>
+
+<table>
+<tr><th>文件</th><th>类型</th><th>说明</th></tr>
+<tr><td><code>templates/header.html</code></td><td>HTML 模板</td><td>公共头部导航栏，包含 Logo、产品购买、解决方案、开发者社区、产品动态、控制台和登录入口</td></tr>
+<tr><td><code>templates/footer.html</code></td><td>HTML 模板</td><td>公共底部区域，包含关于我们、产品服务、帮助支持和联系方式</td></tr>
+<tr><td><code>assets/js/layout.js</code></td><td>JavaScript</td><td>使用 jQuery <code>.load()</code> 把 <code>header.html</code> 和 <code>footer.html</code> 加载到每个页面的占位容器中</td></tr>
+<tr><td><code>assets/js/nav-auth.js</code></td><td>JavaScript</td><td>读取 <code>localStorage</code> 登录态，登录后把“登录 / 注册”替换成头像和用户菜单</td></tr>
+<tr><td><code>assets/css/styles.css</code></td><td>CSS</td><td>存放全站公共样式，并为 <code>#site-header</code> 预设 64px 高度，减少公共头部加载闪动</td></tr>
+<tr><td><code>assets/js/vendor/jquery-3.7.1.min.js</code></td><td>本地第三方脚本</td><td>本地化后的 jQuery，用于页面渲染和公共模板加载</td></tr>
+<tr><td><code>assets/js/vendor/tailwindcss-cdn.js</code></td><td>本地第三方脚本</td><td>本地化后的 Tailwind CSS 运行脚本，避免页面直接请求 Tailwind CDN</td></tr>
+<tr><td><code>assets/js/config/*.js</code></td><td>配置文件</td><td>存放产品数据、购买价格、支付接口、登录接口和控制台接口配置</td></tr>
+</table>
+
+<hr>
+
+<h2 id="section-3">三、核心功能与技术点</h2>
+
+<h3>1. 本地存储 localStorage</h3>
+
+<p>项目使用浏览器 localStorage 保存登录状态和购买记录。</p>
+
+<p>主要保存内容包括：</p>
+
+<pre>
+ajou_login_info      登录接口返回的完整信息
+ajou_auth_user       当前用户信息
+ajou_auth_token      后端生成的登录 token
+ajou_purchased_services  本地购买记录缓存
+</pre>
+
+<p>本地存储的作用：</p>
+
+<p>1. 登录后导航栏可以显示用户头像和 name。</p>
+<p>2. 控制台页面可以判断用户是否已经登录。</p>
+<p>3. 支付成功后可以先保存购买记录，即使后端同步失败，也能保留本地记录。</p>
+<p>4. 页面刷新后仍能恢复用户状态。</p>
+
+<h3>2. 前后端交互</h3>
+
+<p>项目虽然前端以 HTML、CSS、JS 为主，但也实现了和后端接口的交互。</p>
+
+<p>前端通过 fetch 请求后端 PHP 接口。POST 请求主要使用 JSON 请求体提交参数，GET 请求主要通过 URL 查询参数传递参数。用户购买记录接口还会在请求头中携带 Authorization: Bearer token，用于识别当前登录用户。</p>
+
+<table class="api-table">
+<colgroup>
+<col class="api-url">
+<col class="api-method">
+<col class="api-params">
+<col class="api-purpose">
+</colgroup>
+<tr><th>接口</th><th>请求方式</th><th>请求参数</th><th>作用</th></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/google_login.php</code></td><td class="api-method"><code>POST</code></td><td class="api-params"><code>credential</code>：Google 返回的 ID Token</td><td class="api-purpose">Google 登录验证，后端校验 token 后返回 <code>user</code> 和 <code>token</code></td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/auth_code.php</code></td><td class="api-method"><code>POST</code></td><td class="api-params"><code>email</code>：注册邮箱</td><td class="api-purpose">获取邮箱验证码</td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/auth_register.php</code></td><td class="api-method"><code>POST</code></td><td class="api-params"><code>email</code>：邮箱<br><code>password</code>：密码<br><code>code</code>：验证码</td><td class="api-purpose">邮箱注册，注册成功后返回登录态</td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/auth_login.php</code></td><td class="api-method"><code>POST</code></td><td class="api-params"><code>email</code>：邮箱<br><code>password</code>：密码</td><td class="api-purpose">邮箱登录，登录成功后返回 <code>user</code> 和 <code>token</code></td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/alipay_create.php</code></td><td class="api-method"><code>POST</code></td><td class="api-params"><code>order_id</code>：订单号<br><code>amount</code>：支付金额<br><code>subject</code>：订单标题</td><td class="api-purpose">创建支付宝支付订单并返回二维码链接</td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/alipay_query.php</code></td><td class="api-method"><code>GET</code></td><td class="api-params"><code>order_id</code>：订单号</td><td class="api-purpose">查询订单支付状态，前端根据返回结果判断是否支付成功</td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/qrcode.php</code></td><td class="api-method"><code>GET</code></td><td class="api-params"><code>url</code>：需要生成二维码的链接<br><code>size</code>：二维码尺寸</td><td class="api-purpose">根据支付链接生成二维码图片</td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/purchases.php</code></td><td class="api-method"><code>POST</code></td><td class="api-params">请求头：<code>Authorization: Bearer token</code><br>请求体：<code>order_id</code><br><code>amount</code><br><code>subject</code><br><code>service</code></td><td class="api-purpose">支付成功后保存当前用户购买的商品和实例配置</td></tr>
+<tr><td class="api-url"><code>https://ajou.userapi.cn/purchases.php</code></td><td class="api-method"><code>GET</code></td><td class="api-params">请求头：<code>Authorization: Bearer token</code></td><td class="api-purpose">返回当前登录用户已购买的云服务列表，供控制台页面渲染</td></tr>
+</table>
+
+<p>例如创建支付订单时，前端使用 POST 请求：</p>
+
+<pre>{
+  &quot;order_id&quot;: &quot;pay_2c4g_1777309206155&quot;,
+  &quot;amount&quot;: &quot;0.11&quot;,
+  &quot;subject&quot;: &quot;Server 2C 4G&quot;
+}</pre>
+
+<p>查询支付状态时，前端使用 GET 请求：</p>
+
+<pre>https://ajou.userapi.cn/alipay_query.php?order_id=pay_2c4g_1777309206155</pre>
+
+<h3>3. 配置化数据管理</h3>
+
+<p>项目将页面数据拆分到 assets/js/config/ 目录中，避免把所有数据都写死在 HTML 页面里。</p>
+
+<p>主要配置文件：</p>
+
+<table>
+<tr><th>文件</th><th>作用</th></tr>
+<tr><td>`products.config.js`</td><td>产品列表页的 CPU / GPU 分类和产品数据</td></tr>
+<tr><td>`purchase.config.js`</td><td>购买页默认状态、价格、折扣和展示名称</td></tr>
+<tr><td>`payment.config.js`</td><td>支付接口地址配置</td></tr>
+<tr><td>`auth.config.js`</td><td>登录接口和 Google Client ID 配置</td></tr>
+<tr><td>`console.config.js`</td><td>控制台接口配置</td></tr>
+</table>
+
+<p>这样做的好处是：如果后期要新增服务器规格、修改价格、调整接口地址，不需要大面积修改 HTML，只需要调整配置文件。</p>
+
+<h3>4. 公共页面模板实现逻辑</h3>
+
+<p>为了减少每个 HTML 页面中重复书写头部和底部代码，项目将公共头部和底部拆分成独立 HTML 模板：</p>
+
+<pre>
+templates/header.html
+templates/footer.html
+</pre>
+
+<p>每个页面的主体中只保留两个占位容器：</p>
+
+<pre>&lt;div id=&quot;site-header&quot;&gt;&lt;/div&gt;
+
+页面主体内容
+
+&lt;div id=&quot;site-footer&quot;&gt;&lt;/div&gt;</pre>
+
+<p>每个页面头部统一引入本地 jQuery 和公共布局脚本：</p>
+
+<pre>&lt;script src=&quot;assets/js/vendor/jquery-3.7.1.min.js?v=20260428-1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/layout.js?v=20260428-1&quot;&gt;&lt;/script&gt;</pre>
+
+<p><code>layout.js</code> 的核心逻辑是使用 jQuery 的 <code>.load()</code> 方法加载模板：</p>
+
+<pre>$('#site-header').load('templates/header.html', function () {
+  setActiveNav();
+
+  if (window.renderAuthNav) {
+    window.renderAuthNav();
+  }
+});
+
+$('#site-footer').load('templates/footer.html');</pre>
+
+<p>实现流程如下：</p>
+
+<pre>
+页面加载
+        ↓
+layout.js 找到 #site-header 和 #site-footer
+        ↓
+使用 jQuery load() 加载 header.html 和 footer.html
+        ↓
+头部加载完成后执行 setActiveNav()
+        ↓
+根据当前页面地址高亮导航栏
+        ↓
+如果用户已登录，再调用 window.renderAuthNav()
+        ↓
+nav-auth.js 把“登录 / 注册”替换成用户头像和下拉菜单
+</pre>
+
+<p>为了避免公共头部异步加载时页面高度突然变化，<code>styles.css</code> 对头部占位容器提前设置了和导航栏一致的高度：</p>
+
+<pre>#site-header {
+  height: 64px;
+  min-height: 64px;
+}</pre>
+
+<p>同时，公共头部模板使用 <code>.site-main-nav</code>、<code>.site-nav-inner</code>、<code>.site-nav-link</code> 等普通 CSS 类控制布局，不再依赖 Tailwind 动态生成导航布局样式，这样可以减少头部加载时的闪动。</p>
+
+<p>这个实现没有使用额外插件，只使用了本地 jQuery 和普通 HTML 模板，逻辑比较简单，后期修改导航或底部时只需要修改模板文件。</p>
+
+<h3>5. 产品动态页面的数据存放和渲染方式</h3>
+
+<p>产品动态页面没有再单独增加 JS 配置文件，数据直接存放在对应页面的 HTML DOM 结构中，再通过页面底部的 JavaScript 根据 URL 参数控制显示和隐藏。</p>
+
+<h4>产品动态列表页：<code>product-dynamics.html#price</code></h4>
+
+<p>列表页地址示例：</p>
+
+<pre>https://fucheni66.github.io/cloud-service-storefront/product-dynamics.html#price</pre>
+
+<p>其中 <code>#price</code> 是浏览器 URL 的 Hash 值，用来表示当前要显示“价格调整”分类。页面左侧分类和右侧文章卡片通过 <code>data-dynamics-tab</code>、<code>data-dynamics-panel</code> 关联。</p>
+
+<p>数据存放位置：</p>
+
+<pre>&lt;a href=&quot;product-dynamics.html#price&quot; data-dynamics-tab=&quot;price&quot;&gt;价格调整&lt;/a&gt;
+
+&lt;article data-dynamics-panel=&quot;price&quot;&gt;
+  &lt;h2&gt;通用型 CPU 实例按月价格优化&lt;/h2&gt;
+  &lt;p&gt;2C4G、4C8G 和 8C16G 实例完成价格配置更新...&lt;/p&gt;
+  &lt;a href=&quot;product-dynamics-detail.html?id=price-cpu&quot;&gt;查看详情&lt;/a&gt;
+&lt;/article&gt;</pre>
+
+<p>渲染逻辑：</p>
+
+<pre>
+读取 window.location.hash
+        ↓
+得到 price
+        ↓
+查找 data-dynamics-panel=&quot;price&quot; 的文章卡片
+        ↓
+显示价格调整内容，隐藏其它分类内容
+        ↓
+同步高亮 data-dynamics-tab=&quot;price&quot; 的左侧分类
+</pre>
+
+<p>也就是说，<code>#price</code> 本身不是接口参数，而是前端页面内部的分类状态。页面数据就写在 <code>product-dynamics.html</code> 的对应 <code>article</code> 标签中，JS 只负责根据 Hash 控制 DOM 显示隐藏。</p>
+
+<h4>产品动态详情页：<code>product-dynamics-detail.html?id=price-cpu</code></h4>
+
+<p>详情页地址示例：</p>
+
+<pre>https://fucheni66.github.io/cloud-service-storefront/product-dynamics-detail.html?id=price-cpu</pre>
+
+<p>其中 <code>id=price-cpu</code> 是 URL 查询参数，用来表示当前要显示哪一篇详情文章。详情页的每篇文章数据存放在 <code>product-dynamics-detail.html</code> 的 <code>data-dynamics-detail</code> 节点中。</p>
+
+<p>数据存放位置：</p>
+
+<pre>&lt;article data-dynamics-detail=&quot;price-cpu&quot;&gt;
+  &lt;h2&gt;通用型 CPU 实例按月价格优化&lt;/h2&gt;
+  &lt;p&gt;通用型 CPU 实例完成价格配置更新...&lt;/p&gt;
+&lt;/article&gt;</pre>
+
+<p>渲染逻辑：</p>
+
+<pre>
+读取 URLSearchParams(window.location.search)
+        ↓
+得到 id=price-cpu
+        ↓
+查找 data-dynamics-detail=&quot;price-cpu&quot; 的详情文章
+        ↓
+显示对应详情，隐藏其它详情
+        ↓
+如果没有匹配到 id，则默认显示第一篇详情
+</pre>
+
+<p>因此，<code>?id=price-cpu</code> 控制详情页显示哪一篇文章，文章内容本身存放在 <code>product-dynamics-detail.html</code> 内部，不需要请求后端接口。</p>
+
+<hr>
+
+<h2 id="section-4">四、登录方案说明</h2>
+
+<p>本项目登录采用两种方式：</p>
+
+<h3>1. 邮箱登录 / 注册</h3>
+
+<p>用户可以通过邮箱注册账号，注册时需要获取验证码。验证码接口由后端提供，前端负责表单输入、按钮状态、验证码倒计时和登录状态保存。</p>
+
+<p>流程如下：</p>
+
+<pre>
+填写邮箱和密码
+        ↓
+获取验证码
+        ↓
+提交注册
+        ↓
+后端返回 user + token
+        ↓
+前端保存到 localStorage
+        ↓
+跳转控制台
+</pre>
+
+<h3>2. Google 登录</h3>
+
+<p>Google 登录采用 Google Identity Services。前端点击 Google 登录按钮后，Google 返回 credential / ID Token，前端把这个 token 提交给后端验证。</p>
+
+<p>流程如下：</p>
+
+<pre>
+用户点击 Google 登录
+        ↓
+Google 返回 credential / ID Token
+        ↓
+前端 auth.js POST 到 google_login.php
+        ↓
+后端验证 Google ID Token
+        ↓
+验证成功后返回 user + token
+        ↓
+前端保存到 localStorage
+        ↓
+跳转 console.html
+        ↓
+导航栏显示头像和 name
+</pre>
+
+<p>Google 登录的特点：</p>
+
+<p>1. 前端不直接信任 Google 返回信息。</p>
+<p>2. 后端会验证 ID Token 的合法性。</p>
+<p>3. 登录后导航栏会自动替换“登录 / 注册”为用户头像和姓名。</p>
+<p>4. 用户点击头像后可以展开下拉菜单，查看主页或退出登录。</p>
+
+<h3>3. 前端权限判断和页面跳转</h3>
+
+<p>项目中的权限判断主要在前端完成，用于保护控制台、云服务管理页和购买页等需要登录后访问的页面。相关逻辑集中在 <code>assets/js/require-auth.js</code>、<code>assets/js/auth.js</code> 和 <code>assets/js/nav-auth.js</code>。</p>
+
+<h4>登录态保存</h4>
+
+<p>用户邮箱登录、注册或 Google 登录成功后，后端会返回 <code>user</code> 和 <code>token</code>。前端会把这些信息保存到浏览器 <code>localStorage</code>：</p>
+
+<pre>
+ajou_login_info      保存完整登录返回值
+ajou_auth_user       保存当前用户信息
+ajou_auth_token      保存后端返回的登录 token
+</pre>
+
+<h4>权限判断条件</h4>
+
+<p>需要登录保护的页面会先加载 <code>require-auth.js</code>。该脚本会读取本地登录态，并判断是否同时满足以下条件：</p>
+
+<pre>
+存在 token
+        ↓
+存在 user 信息
+        ↓
+user 中有 name 或 email
+        ↓
+允许继续访问当前页面
+</pre>
+
+<p>如果不满足条件，就认为用户未登录。</p>
+
+<h4>未登录跳转逻辑</h4>
+
+<p>未登录时，<code>require-auth.js</code> 会获取当前页面地址，并跳转到登录页：</p>
+
+<pre>
+当前页面：console.html?id=xxx
+        ↓
+拼接 redirect 参数
+        ↓
+跳转到 auth.html?redirect=console.html%3Fid%3Dxxx
+</pre>
+
+<p>这样可以记录用户原本要访问的页面。</p>
+
+<h4>登录成功后的返回逻辑</h4>
+
+<p>登录成功后，<code>auth.js</code> 会读取 URL 中的 <code>redirect</code> 参数：</p>
+
+<pre>
+读取 redirect
+        ↓
+判断 redirect 是否安全
+        ↓
+如果不是 http://、https:// 或 // 开头
+        ↓
+跳回 redirect 指定页面
+        ↓
+如果没有 redirect，则默认进入 console.html
+</pre>
+
+<p>这里做了外部链接拦截，避免登录后被跳转到第三方网站。</p>
+
+<h4>导航栏权限状态</h4>
+
+<p><code>nav-auth.js</code> 会读取 <code>ajou_auth_user</code> 或 <code>ajou_login_info.user</code>。如果存在用户信息，就把导航栏中的“登录 / 注册”按钮替换成用户头像和姓名下拉菜单。</p>
+
+<p>退出登录时，前端会清理本地登录态：</p>
+
+<pre>
+remove ajou_login_info
+remove ajou_auth_user
+remove ajou_auth_token
+        ↓
+跳转回 index.html
+</pre>
+
+<p>整体流程如下：</p>
+
+<pre>
+用户访问受保护页面
+        ↓
+require-auth.js 检查 localStorage
+        ↓
+未登录：跳转 auth.html?redirect=原页面
+        ↓
+用户登录成功
+        ↓
+auth.js 保存 user + token
+        ↓
+读取 redirect 并跳回原页面
+        ↓
+nav-auth.js 更新导航栏用户状态
+</pre>
+
+<hr>
+
+<h2 id="section-5">五、支付方案说明</h2>
+
+<p>期中项目的支付采用支付宝当面付二维码支付流程。</p>
+
+<p>前端点击“立即购买”后，会将订单号、金额和商品名称提交到后端接口：</p>
+
+<pre>
+POST https://ajou.userapi.cn/alipay_create.php
+</pre>
+
+<p>请求示例：</p>
+
+<pre>
+{
+  &quot;order_id&quot;: &quot;pay_2c4g_1777309206155&quot;,
+  &quot;amount&quot;: &quot;0.11&quot;,
+  &quot;subject&quot;: &quot;Server 2C 4G&quot;
+}
+</pre>
+
+<p>后端返回支付宝二维码地址后，前端再通过二维码接口生成二维码图片。</p>
+
+<p>支付流程如下：</p>
+
+<pre>
+选择服务器配置
+        ↓
+实时计算价格
+        ↓
+点击立即购买
+        ↓
+创建订单
+        ↓
+后端生成支付宝二维码
+        ↓
+前端展示二维码
+        ↓
+轮询查询支付状态
+        ↓
+支付成功后写入购买记录
+        ↓
+跳转支付成功页 / 控制台
+</pre>
+
+<p>这个设计让购买流程更接近真实云平台，而不是简单的静态按钮跳转。</p>
+
+<hr>
+
+<h2 id="section-6">六、网页设计说明</h2>
+
+<h3>1. 整体风格</h3>
+
+<p>网站整体采用科技风、云服务平台风格，主色调为蓝色，搭配白色背景、浅灰模块和橙色价格强调色。</p>
+
+<p>主要视觉特点：</p>
+
+<p>1. 蓝色科技风主色。</p>
+<p>2. 大面积留白提升平台感。</p>
+<p>3. 卡片式产品展示。</p>
+<p>4. 渐变标题和动态背景光晕。</p>
+<p>5. 悬浮阴影和 hover 反馈增强交互感。</p>
+
+<h3>2. 首页设计</h3>
+
+<p>首页使用动态光晕背景和渐变文字突出 AI 云平台定位。顶部搜索栏模拟真实云平台搜索体验，下面展示热门产品和系统架构说明。</p>
+
+<p>首页设计重点：</p>
+
+<p>1. Hero 区域突出平台定位。</p>
+<p>2. 动态背景增强科技感。</p>
+<p>3. 搜索栏和热搜产品提高真实平台体验。</p>
+<p>4. 热门产品卡片让用户快速进入购买流程。</p>
+<p>5. 系统架构模块体现项目的学习和技术说明性质。</p>
+
+<h3>3. 购买页设计</h3>
+
+<p>购买页采用云服务厂商常见的配置表单布局，左侧是配置项，右侧是可选参数。底部固定结算栏实时显示配置摘要和价格。</p>
+
+<p>购买页设计重点：</p>
+
+<p>1. 配置项分区清晰。</p>
+<p>2. 被选中项有蓝色边框和角标反馈。</p>
+<p>3. 磁盘容量支持滑块和输入框双向联动。</p>
+<p>4. 底部固定结算栏方便用户随时确认价格。</p>
+<p>5. 弹窗中展示订单信息和支付二维码。</p>
+
+<h3>4. 控制台设计</h3>
+
+<p>控制台用于展示用户已购买的云服务。每个云服务以卡片方式展示规格、地域、系统盘、公网地址、到期时间等信息。</p>
+
+<p>云服务管理页进一步展示：</p>
+
+<p>1. 监控概览。</p>
+<p>2. 网络与连接信息。</p>
+<p>3. 操作日志。</p>
+<p>4. 启动、停止、重启、重装系统等操作按钮。</p>
+<p>5. 账单信息和支持入口。</p>
+
+<hr>
+
+<h2 id="section-7">七、网站托管与运行方式</h2>
+
+<p>前端代码托管在 GitHub 仓库，并通过 GitHub Pages 发布。</p>
+
+<p>前端访问地址：</p>
+
+<pre>
+https://fucheni66.github.io/cloud-service-storefront/
+</pre>
+
+<p>后端接口部署在独立服务器域名：</p>
+
+<pre>
+https://ajou.userapi.cn/
+</pre>
+
+<p>整体部署结构：</p>
+
+<pre>
+GitHub Pages：托管 HTML / CSS / JS 静态页面
+独立服务器：运行 PHP 后端接口
+浏览器：通过 fetch 请求后端接口
+</pre>
+
+<p>这种方式把前端展示和后端接口分开，符合前后端分离的基本思想。</p>
+
+<hr>
+
+<h2 id="section-8">八、创新点说明</h2>
+
+<h3>创新点一：科技风动态首页视觉设计</h3>
+
+<p>首页不是普通静态介绍页，而是使用了动态光晕背景、渐变文字、悬浮卡片和云服务平台风格的搜索栏。</p>
+
+<p>具体体现：</p>
+
+<p>1. 使用 CSS `@keyframes` 实现背景光晕缓慢移动。</p>
+<p>2. 标题使用蓝色到紫色的渐变文字，强化 AI 云平台感觉。</p>
+<p>3. 产品卡片采用悬浮阴影和 hover 反馈。</p>
+<p>4. 首页结构模拟真实云平台首页，包含搜索、热搜、热门产品和系统架构。</p>
+
+<h3>创新点二：云服务器动态配置与价格联动</h3>
+
+<p>购买页不是固定价格展示，而是根据用户选择动态计算价格。</p>
+
+<p>联动内容包括：</p>
+
+<p>1. 实例规格影响基础价格。</p>
+<p>2. 系统盘类型和容量影响磁盘价格。</p>
+<p>3. 包年包月和按量计费采用不同计算方式。</p>
+<p>4. 购买时长影响折扣。</p>
+<p>5. 修改任意配置后，底部价格和配置摘要实时更新。</p>
+
+<p>这使页面具备较强的真实业务交互感。</p>
+
+<h3>创新点三：配置化产品渲染和购买流程联动</h3>
+
+<p>产品列表页通过 products.config.js 配置 CPU / GPU 产品数据，再由 jQuery 动态渲染页面。</p>
+
+<p>优点：</p>
+
+<p>1. 产品数据和页面结构分离。</p>
+<p>2. 新增产品时不需要直接修改 HTML。</p>
+<p>3. 产品卡片点击后会把实例参数带到购买页。</p>
+<p>4. 购买页根据 URL 参数自动选中对应实例。</p>
+
+<p>这个设计让“产品列表 -&gt; 购买配置”之间形成了明确的数据关联。</p>
+
+<h3>创新点四：登录状态驱动的导航栏和控制台保护</h3>
+
+<p>登录后，导航栏会自动从“登录 / 注册”切换为用户头像和 name，并支持下拉菜单。</p>
+
+<p>控制台页面也会检查登录状态，未登录会自动跳转到登录页，并携带 redirect 参数，登录成功后回到原页面。</p>
+
+<p>这让网站具备更完整的平台账号体系体验。</p>
+
+<hr>
+
+<h2 id="section-9">九、前端交互功能清单</h2>
+
+<p>以下列出项目中的主要前端交互：</p>
+
+<p>1. 首页搜索表单跳转到产品页。</p>
+<p>2. 首页热搜产品点击跳转。</p>
+<p>3. 产品列表页通过 jQuery 动态渲染 CPU / GPU 产品卡片。</p>
+<p>4. 产品卡片点击“立即配置”跳转购买页，并携带实例参数。</p>
+<p>5. 购买页根据 URL 参数自动选中实例。</p>
+<p>6. CPU / GPU 实例分类 Tab 切换。</p>
+<p>7. 配置选项点击后切换选中状态。</p>
+<p>8. 计费模式切换后显示或隐藏购买时长。</p>
+<p>9. 磁盘容量滑块和数字输入框双向联动。</p>
+<p>10. 实例、磁盘、计费方式和时长变化后实时计算价格。</p>
+<p>11. 底部固定结算栏实时显示配置摘要。</p>
+<p>12. 点击“立即购买”弹出订单支付弹窗。</p>
+<p>13. 支付弹窗可关闭。</p>
+<p>14. 后端生成支付宝二维码并在页面展示。</p>
+<p>15. 前端轮询查询支付状态。</p>
+<p>16. 支付成功后保存购买记录到本地存储。</p>
+<p>17. 控制台动态渲染已购买服务列表。</p>
+<p>18. 云服务管理页根据订单 ID 渲染详情。</p>
+<p>19. 邮箱登录表单提交和错误提示。</p>
+<p>20. 邮箱注册验证码倒计时。</p>
+<p>21. Google 登录按钮渲染和授权回调。</p>
+<p>22. 登录状态保存到 localStorage。</p>
+<p>23. 导航栏登录后显示头像和 name。</p>
+<p>24. 用户头像下拉菜单支持查看主页和退出登录。</p>
+<p>25. 控制台未登录自动跳转登录页。</p>
+<p>26. 产品动态页支持 Hash Tab 切换。</p>
+<p>27. 产品动态详情页根据 URL 参数展示不同内容。</p>
+<p>28. 社区评论表单提交后动态插入评论。</p>
+<p>29. 发帖页面提交后显示成功提示并平滑滚动到顶部。</p>
+<p>30. 多页面之间通过 `a href` 形成完整业务流程跳转。</p>
+
+<hr>
+
+<h2 id="section-10">十、汇报提纲</h2>
+
+<p>1. 项目背景：说明云服务器购买平台的业务场景和项目目标。</p>
+<p>2. 页面结构：展示首页、产品列表页、购买页、控制台、产品动态和社区页面。</p>
+<p>3. 数据配置：说明产品数据、接口地址、购买配置存放在 assets/js/config 目录中。</p>
+<p>4. 核心交互：展示实例选择、价格计算、支付弹窗、二维码生成和状态查询流程。</p>
+<p>5. 登录权限：说明登录状态保存、未登录跳转和控制台访问控制。</p>
+<p>6. 公共模板：说明头部和底部通过 templates 目录与 layout.js 统一引入。</p>
+<p>7. 项目总结：说明多页面流程、前后端交互和项目维护结构。</p>
+
+<hr>
+
+<h2 id="section-11">十一、汇报说明</h2>
+
+<p>我们小组本次期中项目的主题是“云服务商算力前端演示平台”。这个项目属于平台类网站，主要模拟云服务器租赁和购买流程。</p>
+
+<p>我们的项目整体由首页、产品列表页、购买配置页、登录注册页、控制台页、云服务管理页、产品动态页和社区页面组成。用户可以从首页进入产品列表，选择 CPU 或 GPU 云服务器，然后进入购买页配置实例规格、地域、系统盘、操作系统和计费方式。确认配置后，系统会实时计算价格，并生成订单支付二维码。支付完成后，用户可以进入控制台查看自己购买的云服务。</p>
+
+<p>在技术实现上，项目全部使用 HTML、CSS 和 JavaScript 完成，部分页面使用 jQuery 进行动态渲染。我们将产品数据、购买参数、接口地址等内容拆分到了 assets/js/config 目录中，避免所有数据写死在 HTML 页面里，提升了代码结构清晰度和后续维护性。</p>
+
+<p>项目的一个核心点是本地存储。登录成功后，前端会把用户信息和 token 保存到 localStorage 中。导航栏会根据本地登录状态显示用户头像和姓名，控制台页面也会根据登录状态判断是否允许访问。如果用户没有登录，会自动跳转到登录页面。</p>
+
+<p>另一个核心点是前后端交互。前端通过 fetch 请求后端 PHP 接口，实现 Google 登录验证、邮箱登录注册、支付宝支付二维码生成、支付状态查询和购买记录保存。前端托管在 GitHub Pages，后端接口部署在独立服务器域名上，实现了前后端分离。</p>
+
+<p>本项目的支付采用支付宝当面付二维码支付。用户点击立即购买后，前端会把订单号、金额和商品名称发送给后端，后端生成支付宝二维码地址，前端再展示二维码，并定时查询支付状态。这个流程让项目更接近真实云平台的购买体验。</p>
+
+<p>登录方面，我们实现了邮箱登录注册和 Google 登录。Google 登录使用 Google Identity Services，前端获取 credential 后提交给后端验证，验证成功后保存用户信息，并在导航栏展示头像和 name。</p>
+
+<p>网页设计方面，我们采用科技风云平台设计。首页使用动态光晕背景、渐变标题、搜索栏、热门产品卡片和系统架构模块。购买页采用真实云服务厂商常见的配置面板布局，底部固定结算栏实时展示费用，整体风格统一。</p>
+
+<p>本项目的创新点主要有两个。第一是科技风动态首页视觉设计，通过动态光晕、渐变文字和悬浮卡片提升页面视觉效果。第二是云服务器动态配置与价格联动，用户每修改一个配置项，价格和摘要都会实时变化。此外，我们还实现了配置化产品渲染和登录状态驱动导航，这些都增强了平台类网站的完整性。</p>
+
+<p>在交互功能方面，项目实现了搜索跳转、产品动态渲染、实例参数跳转、CPU/GPU Tab 切换、配置选中、磁盘滑块联动、价格实时计算、订单弹窗、二维码生成、支付状态轮询、登录注册、验证码倒计时、Google 登录、头像下拉菜单、控制台登录保护、评论动态插入等功能。</p>
+
+<p>最后，项目代码结构清晰，页面数量超过 4 个，多页面之间形成了完整的浏览、选择、购买、支付和管理流程。以上就是我们小组项目的主要内容，谢谢大家。</p>
+</body></html>
