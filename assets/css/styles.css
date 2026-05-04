@@ -16,7 +16,6 @@
   background: #a8a8a8;
 }
 
-/* 公共头部模板异步加载前，先预留和导航栏一致的 64px 高度。 */
 #site-header {
   height: 64px;
   min-height: 64px;
@@ -28,7 +27,6 @@
   overflow: visible;
 }
 
-/* 头部导航使用固定 CSS 类，不依赖 Tailwind 动态生成，减少模板加载闪动。 */
 .site-main-nav {
   height: 64px;
   min-height: 64px;
@@ -152,7 +150,6 @@
   }
 }
 
-/* 首页首屏使用本地横幅背景图，左侧留给品牌和搜索，右侧显示抽象云服务器视觉。 */
 .home-hero {
   height: 550px;
   max-height: 550px;
@@ -193,12 +190,10 @@
   }
 }
 
-/* 热门产品卡片向上压进首屏区域，形成一半悬浮在横幅上的效果。 */
 .home-overlap-panel {
   margin-top: -8.5rem;
 }
 
-/* 首页热门产品 Tab：宽度跟随按钮内容自适应。 */
 .home-product-tabs {
   display: inline-flex;
   width: fit-content;
@@ -256,7 +251,6 @@
   }
 }
 
-/* 公共底部模板异步加载前，先预留 footer 高度，避免页面加载后突然撑开。 */
 #site-footer {
   min-height: 500px;
   margin-top: auto;

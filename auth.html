@@ -95,9 +95,7 @@
           >
             登录
           </button>
-
-          <!-- Google Identity Services 官方登录按钮渲染到这个容器里。 -->
-          <div
+<div
             id="google-login-button"
             class="w-full min-h-[44px] flex justify-center"
           ></div>
@@ -258,13 +256,9 @@
         });
       })();
     </script>
-    <!-- 认证配置：前端 Google Client ID、后端 API 地址、登录成功默认跳转页。 -->
-    <script src="assets/js/config/auth.config.js?v=20260428-3"></script>
-    <!-- Google 官方 Identity Services SDK，负责弹出 Google 登录并返回 credential。 -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <!-- 登录页逻辑：接收 Google credential，提交后端验证，并写入 localStorage。 -->
-    <script src="assets/js/auth.js?v=20260428-3"></script>
-    <!-- 公共导航登录态：登录后把“登录 / 注册”替换成头像/name 下拉菜单。 -->
-    <script src="assets/js/nav-auth.js?v=20260428-3"></script>
+<script src="assets/js/config/auth.config.js?v=20260428-3"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="assets/js/auth.js?v=20260428-3"></script>
+<script src="assets/js/nav-auth.js?v=20260428-3"></script>
   </body>
 </html>

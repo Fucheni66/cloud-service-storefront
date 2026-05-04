@@ -2,39 +2,33 @@
 let backendPurchasesLoaded = false;
 
 $(async function () {
-  // 管理页通过 console-manage.html?id=xxx 获取当前要管理的服务 ID。
   const serviceId = new URLSearchParams(window.location.search).get('id') || '';
-  // 控制台接口地址和默认配置由 console.config.js 注入。
+
   const config = window.CONSOLE_PAGE_CONFIG || {};
 
-  // 先显示加载状态，再读取后端或本地购买记录。
   renderManageLoading();
   const services = await getConsoleServices(config);
-  // 优先从购买记录中匹配服务；后端未成功返回时允许根据订单号生成本地预览数据。
+
   const service = services.find((item) => item.id === serviceId) || (backendPurchasesLoaded ? null : buildServiceFromId(serviceId));
 
-  // 使用 jQuery 清空根容器，再插入管理页主体或未找到提示。
   $('#console-manage-root').empty().append(
     service ? renderManageView(service) : renderManageNotFound(serviceId)
   );
 });
 
 async function getConsoleServices(config) {
-  // 优先读取后端真实购买记录。
   const backendServices = await getBackendPurchasedServices(config);
 
   if (backendServices) {
     return backendServices.map((service) => normalizeAllocatedService(service));
   }
 
-  // 后端不可用时，回退到浏览器本地购买记录，并过滤旧版演示数据。
   return [...getStoredPurchasedServices(), ...(config.services || [])]
     .filter((service) => !isDemoService(service))
     .map((service) => normalizeAllocatedService(service));
 }
 
 async function getBackendPurchasedServices(config) {
-  // 后端购买记录接口需要登录 token，没有 token 时返回空列表。
   const token = getAuthToken();
 
   if (!token) {
@@ -42,7 +36,6 @@ async function getBackendPurchasedServices(config) {
   }
 
   try {
-    // 根据配置拼接接口地址，请求当前用户已购买的服务列表。
     const response = await fetch(buildConsoleApiUrl(config, config.purchasesPath || '/purchases'), {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -57,14 +50,12 @@ async function getBackendPurchasedServices(config) {
     backendPurchasesLoaded = true;
     return data.items;
   } catch (error) {
-    // 后端不可用时不阻断页面，继续使用 localStorage 降级展示。
     console.warn('后端购买记录读取失败，使用本地记录：', error.message || error);
     return null;
   }
 }
 
 function normalizeAllocatedService(service) {
-  // 支付成功后可能先写入“资源分配中”，管理页统一展示为“分配成功”。
   if (service.status !== '资源分配中') {
     return service;
   }
@@ -77,7 +68,6 @@ function normalizeAllocatedService(service) {
 }
 
 function getStoredPurchasedServices() {
-  // 本地购买记录用于前端预览，也作为后端接口失败时的兜底数据。
   try {
     const services = JSON.parse(localStorage.getItem('ajou_purchased_services') || '[]');
     return Array.isArray(services) ? services : [];
@@ -87,13 +77,11 @@ function getStoredPurchasedServices() {
 }
 
 function getAuthToken() {
-  // token 可能单独存储，也可能保存在完整登录信息中，两种方式都兼容。
   const loginInfo = readJsonStorage('ajou_login_info');
   return localStorage.getItem('ajou_auth_token') || (loginInfo && loginInfo.token) || '';
 }
 
 function readJsonStorage(key) {
-  // localStorage 内容可能不是合法 JSON，解析失败时返回 null。
   try {
     return JSON.parse(localStorage.getItem(key) || 'null');
   } catch (error) {
@@ -102,13 +90,11 @@ function readJsonStorage(key) {
 }
 
 function buildConsoleApiUrl(config, path) {
-  // 去掉 apiBaseUrl 末尾斜杠，避免拼接出重复斜杠。
   const baseUrl = (config.apiBaseUrl || '').replace(/\/+$/, '');
   return `${baseUrl}${path || ''}`;
 }
 
 function isDemoService(service) {
-  // 控制台默认不显示旧版静态演示服务，只展示实际购买记录。
   return [
     'ecs-20260427001',
     'gpu-20260427002',
@@ -118,7 +104,6 @@ function isDemoService(service) {
 }
 
 function buildServiceFromId(serviceId) {
-  // 本地预览兼容：从 pay_规格_时间戳 这样的订单号里反推出服务信息。
   const match = serviceId.match(/^pay_(.+)_\d+$/);
 
   if (!match) {
@@ -154,7 +139,6 @@ function buildServiceFromId(serviceId) {
 }
 
 function renderManageLoading() {
-  // 数据读取过程中显示加载卡片，避免页面主体空白。
   $('#console-manage-root').empty().append(
     $('<div>', { class: 'bg-white rounded-xl border border-gray-200 shadow-sm p-10 text-center text-gray-500' }).append(
       $('<i>', { class: 'fa-solid fa-spinner fa-spin text-primary text-2xl mb-3' }),
@@ -164,7 +148,6 @@ function renderManageLoading() {
 }
 
 function renderManageView(service) {
-  // 管理页整体结构：顶部服务信息，左侧监控/网络/日志，右侧操作/费用/支持。
   return $('<div>', { class: 'space-y-6' }).append(
     renderManageHeader(service),
     $('<div>', { class: 'grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-6' }).append(
@@ -183,7 +166,6 @@ function renderManageView(service) {
 }
 
 function renderManageHeader(service) {
-  // 管理页头部展示服务名称、状态、规格标签和主要操作入口。
   return $('<div>', { class: 'bg-white border border-gray-200 rounded-xl p-6 shadow-sm' }).append(
     $('<div>', { class: 'flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5' }).append(
       $('<div>').append(
@@ -213,7 +195,6 @@ function renderManageHeader(service) {
 }
 
 function renderNetworkPanel(service) {
-  // 连接与网络信息压缩展示，方便快速查看公网 IP、登录用户、端口和系统盘。
   return $('<section>', { class: 'bg-white border border-gray-200 rounded-xl p-5 shadow-sm' }).append(
     $('<h3>', { class: 'text-base font-bold text-gray-900 mb-4', text: '连接与网络' }),
     $('<div>', { class: 'grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm' }).append(
@@ -228,7 +209,6 @@ function renderNetworkPanel(service) {
 }
 
 function renderMonitorPanel(service) {
-  // 监控概览放在管理内容最上方，展示 CPU、内存和公网流量。
   return $('<section>', { class: 'bg-white border border-gray-200 rounded-xl p-6 shadow-sm' }).append(
     $('<div>', { class: 'flex items-center justify-between gap-4 mb-5' }).append(
       $('<h3>', { class: 'text-lg font-bold text-gray-900', text: '监控概览' }),
@@ -243,7 +223,6 @@ function renderMonitorPanel(service) {
 }
 
 function renderOperationLog(service) {
-  // 操作日志用于展示购买后资源写入、支付成功和订单创建记录。
   return $('<section>', { class: 'bg-white border border-gray-200 rounded-xl p-6 shadow-sm' }).append(
     $('<h3>', { class: 'text-lg font-bold text-gray-900 mb-5', text: '操作日志' }),
     $('<div>', { class: 'space-y-4 text-sm' }).append(
@@ -255,7 +234,6 @@ function renderOperationLog(service) {
 }
 
 function renderActionPanel(service) {
-  // 实例操作面板只做前端展示；资源分配中时禁用不可操作按钮。
   return $('<section>', { class: 'bg-white border border-gray-200 rounded-xl p-6 shadow-sm' }).append(
     $('<h3>', { class: 'text-lg font-bold text-gray-900 mb-4', text: '实例操作' }),
     $('<div>', { class: 'grid grid-cols-2 gap-3' }).append(
@@ -269,7 +247,6 @@ function renderActionPanel(service) {
 }
 
 function renderBillingPanel(service) {
-  // 费用信息从购买记录中读取，统一展示计费方式、月预估和到期时间。
   return $('<section>', { class: 'bg-white border border-gray-200 rounded-xl p-6 shadow-sm' }).append(
     $('<h3>', { class: 'text-lg font-bold text-gray-900 mb-4', text: '费用信息' }),
     $('<div>', { class: 'space-y-3 text-sm' }).append(
@@ -285,7 +262,6 @@ function renderBillingPanel(service) {
 }
 
 function renderSupportPanel() {
-  // 支持入口统一跳转到产品动态详情页里的帮助文章。
   return $('<section>', { class: 'bg-white border border-gray-200 rounded-xl p-6 shadow-sm' }).append(
     $('<h3>', { class: 'text-lg font-bold text-gray-900 mb-4', text: '支持入口' }),
     $('<div>', { class: 'space-y-3 text-sm' }).append(
@@ -302,7 +278,6 @@ function renderSupportPanel() {
 }
 
 function renderInfoItem(label, value, icon) {
-  // 普通信息项组件，保留给后续扩展更多概览字段使用。
   return $('<div>', { class: 'border border-gray-200 rounded-lg p-4 min-h-[92px]' }).append(
     $('<div>', { class: 'flex items-start gap-3' }).append(
       $('<i>', { class: `${icon} text-gray-400 mt-1 w-4` }),
@@ -315,7 +290,6 @@ function renderInfoItem(label, value, icon) {
 }
 
 function renderCompactInfoItem(label, value, icon) {
-  // 连接与网络面板使用的紧凑信息项，长文本用 title 保留完整内容。
   return $('<div>', { class: 'flex items-center gap-3 border-b border-gray-100 py-2 min-w-0' }).append(
     $('<i>', { class: `${icon} text-gray-400 w-4 flex-shrink-0` }),
     $('<span>', { class: 'text-gray-400 text-xs w-16 flex-shrink-0', text: label }),
@@ -324,7 +298,6 @@ function renderCompactInfoItem(label, value, icon) {
 }
 
 function renderMetricCard(label, value, icon) {
-  // 监控指标卡片，下方进度条根据百分比数值自动设置宽度。
   return $('<div>', { class: 'border border-gray-200 rounded-lg p-4' }).append(
     $('<div>', { class: 'flex items-center justify-between mb-3' }).append(
       $('<span>', { class: 'text-sm text-gray-500', text: label }),
@@ -338,7 +311,6 @@ function renderMetricCard(label, value, icon) {
 }
 
 function renderLogItem(title, description, icon) {
-  // 操作日志单行组件，左侧为图标，右侧为标题和说明。
   return $('<div>', { class: 'flex items-start gap-3' }).append(
     $('<div>', { class: 'w-8 h-8 rounded-full bg-blue-50 text-primary flex items-center justify-center flex-shrink-0' }).append(
       $('<i>', { class: `${icon} text-xs` })
@@ -351,7 +323,6 @@ function renderLogItem(title, description, icon) {
 }
 
 function renderActionButton(label, icon, disabled) {
-  // 根据 disabled 参数切换按钮可用和不可用样式。
   return $('<button>', {
     type: 'button',
     disabled,
@@ -367,7 +338,6 @@ function renderActionButton(label, icon, disabled) {
 }
 
 function renderBillingRow(label, value) {
-  // 费用信息里的键值行组件。
   return $('<div>', { class: 'flex items-center justify-between border-b border-gray-100 pb-3 last:border-b-0 last:pb-0' }).append(
     $('<span>', { class: 'text-gray-500', text: label }),
     $('<span>', { class: 'font-medium text-gray-900 text-right', text: value || '-' })
@@ -375,7 +345,6 @@ function renderBillingRow(label, value) {
 }
 
 function renderManageNotFound(serviceId) {
-  // URL 缺少 id 或购买记录中找不到对应服务时展示此状态。
   return $('<div>', { class: 'bg-white rounded-xl border border-gray-200 shadow-sm p-10 text-center' }).append(
     $('<div>', { class: 'w-14 h-14 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto mb-4' }).append(
       $('<i>', { class: 'fa-solid fa-triangle-exclamation text-2xl' })
@@ -387,28 +356,23 @@ function renderManageNotFound(serviceId) {
 }
 
 function getCpuUsage(service) {
-  // 本地预览监控数据：资源未分配时显示 0%，分配后显示固定示例值。
   return service.status === '资源分配中' ? '0%' : '18%';
 }
 
 function getMemoryUsage(service) {
-  // 本地预览监控数据：资源未分配时显示 0%，分配后显示固定示例值。
   return service.status === '资源分配中' ? '0%' : '42%';
 }
 
 function getNetworkUsage(service) {
-  // 本地预览监控数据：资源未分配时显示 0%，分配后显示固定示例值。
   return service.status === '资源分配中' ? '0%' : '26%';
 }
 
 function parseMetricPercent(value) {
-  // 把“18%”这样的文本转换成 0-100 之间的数字，用于进度条宽度。
   const percent = Number.parseInt(String(value).replace('%', ''), 10);
   return Number.isFinite(percent) ? Math.max(0, Math.min(100, percent)) : 0;
 }
 
 function formatDateTime(value) {
-  // 把 ISO 时间转换成页面展示用的 yyyy-mm-dd hh:mm。
   if (!value) {
     return '-';
   }

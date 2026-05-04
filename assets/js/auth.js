@@ -1,9 +1,7 @@
 // 登录页认证逻辑：邮箱登录注册、Google 登录、统一保存浏览器登录态。
 (function () {
-  // ----------- 基础配置 ----------------
   const config = window.AUTH_CONFIG;
 
-  // 这三个 key 是前端登录态的统一存储位置，导航栏和控制台保护都会读取。
   const storageKeys = {
     loginInfo: 'ajou_login_info',
     authUser: 'ajou_auth_user',
@@ -14,17 +12,14 @@
     return;
   }
 
-  // ----------- 页面启动入口 ----------------
   window.addEventListener('load', function () {
     bindEmailAuth();
 
     if (config.google) {
-      // Google SDK 是异步加载的，页面 load 后仍可能还没挂载到 window.google。
       waitForGoogleSdk(0);
     }
   });
 
-  // ----------- 邮箱登录注册 ----------------
   function bindEmailAuth() {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
@@ -43,9 +38,6 @@
     }
   }
 
-  /**
-   * 邮箱登录表单提交。
-   */
   async function handleEmailLogin(event) {
     event.preventDefault();
 
@@ -70,9 +62,6 @@
     }
   }
 
-  /**
-   * 获取邮箱验证码。
-   */
   async function handleSendCode() {
     const button = document.getElementById('send-code-button');
     const email = getInputValue('register-email');
@@ -100,9 +89,6 @@
     }
   }
 
-  /**
-   * 邮箱注册表单提交。
-   */
   async function handleEmailRegister(event) {
     event.preventDefault();
 
@@ -128,7 +114,6 @@
     }
   }
 
-  // ----------- 等待并初始化 Google SDK ----------------
   function waitForGoogleSdk(attempt) {
     if (!window.google || !google.accounts || !google.accounts.id) {
       if (attempt < 20) {
@@ -142,13 +127,11 @@
       return;
     }
 
-    // 初始化 Google Identity Services，登录成功后 Google 会回调 handleGoogleCredential。
     google.accounts.id.initialize({
       client_id: config.google.clientId,
       callback: handleGoogleCredential,
     });
 
-    // 把 Google 官方登录按钮渲染到 auth.html 的 #google-login-button 容器里。
     google.accounts.id.renderButton(
       document.getElementById('google-login-button'),
       {
@@ -161,9 +144,7 @@
     );
   }
 
-  // ----------- 接收 Google 授权结果 ----------------
   async function handleGoogleCredential(response) {
-    // response.credential 是 Google 返回的 ID Token，不能只在前端信任，必须交给后端验证。
     if (!response || !response.credential) {
       showAuthMessage('没有获取到 Google 登录凭证。', 'error');
       return;
@@ -172,7 +153,6 @@
     showAuthMessage('正在验证 Google 登录信息...', 'info');
 
     try {
-      // 把 Google ID Token 提交给 PHP 后端，由后端校验 aud/iss/exp/email/sub。
       const data = await postAuthJson(config.google.loginPath, {
         credential: response.credential,
       });
@@ -185,7 +165,6 @@
     }
   }
 
-  // ----------- 请求后端认证接口 ----------------
   async function postAuthJson(path, payload) {
     const response = await fetch(buildApiUrl(path), {
       method: 'POST',
@@ -208,39 +187,31 @@
     return `${baseUrl}${path || ''}`;
   }
 
-  // ----------- 保存浏览器登录态 ----------------
   function saveLoginInfo(data) {
-    // 保存完整返回值，便于调试和后续扩展。
     localStorage.setItem(storageKeys.loginInfo, JSON.stringify(data));
 
     if (data.user) {
-      // 保存纯用户信息，nav-auth.js 用它显示头像和 name。
       localStorage.setItem(storageKeys.authUser, JSON.stringify(data.user));
     }
 
     if (data.token) {
-      // 保存后端生成的本地 token，require-auth.js 用它判断是否已登录。
       localStorage.setItem(storageKeys.authToken, data.token);
     }
   }
 
-  // ----------- 登录成功后跳转地址 ----------------
   function redirectAfterLogin() {
     window.setTimeout(function () {
-      // 自动跳转
       window.location.href =
         getLoginRedirectUrl() || config.loginSuccessPage || 'console.html';
     }, 500);
   }
 
   function getLoginRedirectUrl() {
-    // 用户从控制台被拦截到登录页时，redirect 用来登录后回到原页面。
     const redirect = new URLSearchParams(window.location.search).get(
       'redirect',
     );
     const lowerRedirect = (redirect || '').toLowerCase();
 
-    // 禁止跳转到外部 URL，避免登录后被重定向到第三方地址。
     if (
       !redirect ||
       lowerRedirect.startsWith('http://') ||
@@ -253,7 +224,6 @@
     return redirect;
   }
 
-  // ----------- 页面提示信息 ----------------
   function showAuthMessage(text, type) {
     const message = document.getElementById('auth-message');
 
