@@ -152,6 +152,110 @@
   }
 }
 
+/* 首页首屏使用本地横幅背景图，左侧留给品牌和搜索，右侧显示抽象云服务器视觉。 */
+.home-hero {
+  height: 550px;
+  max-height: 550px;
+  padding: 3.25rem 0 8.5rem;
+  background-color: #eaf7ff;
+  background-image:
+    radial-gradient(circle at 72% 12%, rgb(212 238 255 / 0.78) 0%, rgb(212 238 255 / 0) 34%),
+    radial-gradient(circle at 20% 10%, rgb(244 250 255 / 0.92) 0%, rgb(244 250 255 / 0) 36%),
+    linear-gradient(180deg, rgb(226 243 255 / 0) 0%, #ffffff 100%),
+    linear-gradient(90deg, #f8fcff 0%, #eef8ff 42%, #dff1ff 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-hero-server-image {
+  position: absolute;
+  top: 4.25rem;
+  right: max(5rem, calc((100vw - 80rem) / 2 + 1.5rem));
+  z-index: 1;
+  width: min(30vw, 460px);
+  max-height: 315px;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 26px 46px rgb(20 83 180 / 0.2));
+  transform: rotate(7deg);
+  animation: home-server-float 6s ease-in-out infinite;
+}
+
+@keyframes home-server-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(7deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(9deg);
+  }
+}
+
+/* 热门产品卡片向上压进首屏区域，形成一半悬浮在横幅上的效果。 */
+.home-overlap-panel {
+  margin-top: -8.5rem;
+}
+
+/* 首页热门产品 Tab：宽度跟随按钮内容自适应。 */
+.home-product-tabs {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.home-product-tabs .popular-product-tab {
+  width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #4b5563;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-product-tabs .popular-product-tab:hover {
+  color: #0052d9;
+}
+
+.home-product-tabs .popular-product-tab.active {
+  color: #0052d9;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.12);
+}
+
+.popular-product-panel {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.popular-product-panel.active {
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .popular-product-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero {
+    height: 550px;
+    max-height: 550px;
+    padding: 2.5rem 0 7rem;
+    background-position: 58% center;
+  }
+
+  .home-overlap-panel {
+    margin-top: -7rem;
+  }
+
+  .home-hero-server-image {
+    display: none;
+  }
+}
+
 /* 公共底部模板异步加载前，先预留 footer 高度，避免页面加载后突然撑开。 */
 #site-footer {
   min-height: 500px;
