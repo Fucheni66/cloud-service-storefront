@@ -12,7 +12,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260428-5" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260504-5" />
+    <style>
+      .home-hero{
+        padding: 4.25rem 0 13.5rem;
+      }
+    </style>
   </head>
   <body
     class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col"
@@ -20,43 +25,37 @@
     <div id="site-header"></div>
 
     <main class="flex-grow flex flex-col relative">
-      <section class="relative bg-white pt-16 pb-40 overflow-hidden">
+      <section class="home-hero relative overflow-hidden">
+        <img
+          class="home-hero-server-image"
+          src="assets/images/home-server-rack.png"
+          alt="云服务器机柜"
+        />
         <div
-          class="absolute top-10 left-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob"
-        ></div>
-        <div
-          class="absolute top-10 right-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000"
-        ></div>
-        <div
-          class="absolute -bottom-8 left-1/3 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-4000"
-        ></div>
-
-        <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-start text-left"
         >
           <h1
-            class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 leading-tight"
+            class="text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight mb-6 text-slate-900 leading-tight max-w-3xl"
           >
-            强大的
             <span
-              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600"
-              >一站式 AI 云平台</span
-            >，<br class="hidden md:block" />满足您的一切需求
+              class="lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600"
+              >Ajou Cloud</span
+            >
+            <br />云服务器平台
           </h1>
           <p
-            class="text-lg md:text-xl text-gray-500 mb-8 max-w-3xl leading-relaxed"
+            class="text-base md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed"
           >
-            为塑造未来的
-            <span class="text-primary font-medium">AI 开发者</span> 和安全扩展
-            AI 的
-            <span class="text-primary font-medium">企业</span>
-            而生。<br />以无与伦比的速度、智能和经济性重新定义云端算力。
+            面向个人网站、开发测试和业务系统部署，提供
+            <span class="text-primary font-medium">CPU 云服务器</span> 与
+            <span class="text-primary font-medium">GPU 云服务器</span>
+            购买、支付、控制台管理的一体化流程。
           </p>
 
-          <div class="w-full max-w-3xl mx-auto mb-8 relative">
+          <div class="w-full max-w-2xl mb-8 relative">
             <form
               action="products.html"
-              class="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-lg focus-within:ring-2 ring-primary/20 focus-within:border-primary transition duration-300 h-14"
+              class="hidden"
             >
               <div class="pl-4 text-gray-400">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -75,23 +74,33 @@
               </button>
             </form>
             <div
-              class="mt-3 text-sm text-gray-500 flex justify-start sm:justify-center items-center space-x-4 overflow-x-auto whitespace-nowrap pb-2"
+              class="hidden"
             >
-              <span class="text-red-500 flex items-center font-medium"
-                ><i class="fa-solid fa-fire mr-1"></i> 热搜产品:</span
+              <div
+                class="text-sm text-gray-500 flex justify-start items-center space-x-4 overflow-x-auto whitespace-nowrap pb-1"
               >
-              <a href="products.html" class="hover:text-primary transition"
-                >云服务器</a
-              >
+                <span class="text-red-500 flex items-center font-medium"
+                  ><i class="fa-solid fa-fire mr-1"></i> 热搜产品:</span
+                >
+                <a href="products.html" class="hover:text-primary transition"
+                  >云服务器</a
+                >
 
-              <a href="products.html" class="hover:text-primary transition"
-                >轻量应用服务器</a
-              >
+                <a href="products.html" class="hover:text-primary transition"
+                  >轻量应用服务器</a
+                >
+              </div>
             </div>
+            <a
+              href="products.html"
+              class="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded transition duration-300 shadow-md whitespace-nowrap"
+              >立即选购
+              <i class="fa-solid fa-arrow-right ml-2 text-sm opacity-80"></i
+            ></a>
           </div>
 
           <div
-            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+            class="hidden"
           >
             <a
               href="products.html"
@@ -104,22 +113,22 @@
           </div>
 
           <div
-            class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-600"
+            class="hidden"
           >
             <span class="flex items-center"
               ><i class="fa-solid fa-check text-blue-500 mr-1.5"></i> 80+
               云产品</span
             >
             <span class="flex items-center"
-              ><i class="fa-solid fa-check text-blue-500 mr-1.5"></i> 7000万 AI
-              tokens</span
+              ><i class="fa-solid fa-check text-blue-500 mr-1.5"></i> CPU / GPU
+              云服务器</span
             >
           </div>
         </div>
       </section>
 
       <section
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mt-24 mb-16 w-full"
+        class="home-overlap-panel max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 mb-16 w-full"
       >
         <div
           class="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] flex flex-col md:flex-row overflow-hidden border border-gray-100"
@@ -252,11 +261,311 @@
           </div>
         </div>
       </section>
+
+      <section id="recommended-products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10"
+          >
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                热门产品推荐
+              </h2>
+              <p class="text-gray-500 mt-4 max-w-2xl">
+                按云服务器类型快速选择热门配置，从个人项目到企业应用都可以直接进入选购。
+              </p>
+            </div>
+            <div
+              class="home-product-tabs bg-gray-100 rounded-lg p-1 text-xs sm:text-sm font-medium"
+            >
+              <button
+                type="button"
+                class="popular-product-tab active min-w-0 sm:flex-none px-2 sm:px-4 py-2 rounded-md whitespace-nowrap"
+                data-popular-product-tab="basic"
+              >
+                通用服务器
+              </button>
+              <button
+                type="button"
+                class="popular-product-tab min-w-0 sm:flex-none px-2 sm:px-4 py-2 rounded-md whitespace-nowrap"
+                data-popular-product-tab="business"
+              >
+                业务部署
+              </button>
+              <button
+                type="button"
+                class="popular-product-tab min-w-0 sm:flex-none px-2 sm:px-4 py-2 rounded-md whitespace-nowrap"
+                data-popular-product-tab="gpu"
+              >
+                GPU 算力
+              </button>
+            </div>
+          </div>
+
+          <div
+            data-popular-product-panel="basic"
+            class="popular-product-panel active"
+          >
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-primary hover:shadow-lg transition bg-white"
+            >
+              <div class="text-primary text-2xl mb-5">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                个人网站服务器
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合个人博客、作品集、课程项目和企业官网，配置轻量，成本可控。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：2核 4G / 40GB SSD
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">60</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=2c4g"
+                class="mt-5 inline-flex items-center text-primary hover:text-primary-hover text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-primary hover:shadow-lg transition bg-white"
+            >
+              <div class="text-primary text-2xl mb-5">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                开发测试环境
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合接口调试、后台管理系统测试、数据库联调和临时演示环境。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：4核 8G / 80GB SSD
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">120</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=4c8g"
+                class="mt-5 inline-flex items-center text-primary hover:text-primary-hover text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-primary hover:shadow-lg transition bg-white"
+            >
+              <div class="text-primary text-2xl mb-5">
+                <i class="fa-solid fa-building"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                企业应用服务器
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合中小企业业务系统、CRM、ERP、管理后台和小程序后端服务。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：8核 16G / 100GB SSD
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">250</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=8c16g"
+                class="mt-5 inline-flex items-center text-primary hover:text-primary-hover text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+          </div>
+
+          <div
+            data-popular-product-panel="business"
+            class="popular-product-panel"
+          >
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-primary hover:shadow-lg transition bg-white"
+            >
+              <div class="text-primary text-2xl mb-5">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                高并发 Web 服务
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                支撑活动页、门户站点和业务接口，适合搭配负载均衡和缓存使用。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：8核 16G / 高带宽
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">250</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=8c16g"
+                class="mt-5 inline-flex items-center text-primary hover:text-primary-hover text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-primary hover:shadow-lg transition bg-white"
+            >
+              <div class="text-primary text-2xl mb-5">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                数据库与缓存节点
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合部署 MySQL、Redis、队列服务和业务中间件，保障应用基础能力。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：4核 8G / 100GB SSD
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">120</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=4c8g"
+                class="mt-5 inline-flex items-center text-primary hover:text-primary-hover text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-primary hover:shadow-lg transition bg-white"
+            >
+              <div class="text-primary text-2xl mb-5">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                安全运维跳板机
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合作为 SSH 登录入口、运维控制节点和内网管理入口，便于权限管理。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：2核 4G / 安全组
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">60</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=2c4g"
+                class="mt-5 inline-flex items-center text-primary hover:text-primary-hover text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+          </div>
+
+          <div
+            data-popular-product-panel="gpu"
+            class="popular-product-panel"
+          >
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-purple-500 hover:shadow-lg transition bg-white"
+            >
+              <div class="text-purple-600 text-2xl mb-5">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                轻量推理服务器
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合轻量模型推理、图像识别、实验 API 服务和小型 GPU 任务。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：NVIDIA T4
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">1200</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=gpu_t4"
+                class="mt-5 inline-flex items-center text-purple-600 hover:text-purple-700 text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-purple-500 hover:shadow-lg transition bg-white"
+            >
+              <div class="text-purple-600 text-2xl mb-5">
+                <i class="fa-solid fa-gauge-high"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                图形渲染工作站
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合云端渲染、视频处理、图形任务和需要 GPU 加速的桌面环境。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：GPU T4 / 16G 显存
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">1200</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=gpu_t4"
+                class="mt-5 inline-flex items-center text-purple-600 hover:text-purple-700 text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+
+            <article
+              class="border border-gray-200 rounded-lg p-6 hover:border-purple-500 hover:shadow-lg transition bg-white"
+            >
+              <div class="text-purple-600 text-2xl mb-5">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">
+                训练实验服务器
+              </h3>
+              <p class="text-sm text-gray-500 leading-6 min-h-[72px]">
+                适合深度学习实验、数据处理任务和需要更高显存的训练环境。
+              </p>
+              <div class="mt-5 text-sm text-gray-600">
+                推荐：NVIDIA A100
+              </div>
+              <div class="mt-4 text-[#FF6A00]">
+                <span class="text-sm">¥</span>
+                <span class="text-2xl font-bold">8500</span>
+                <span class="text-xs text-gray-500 ml-1">/月起</span>
+              </div>
+              <a
+                href="purchase.html?instance=gpu_a100"
+                class="mt-5 inline-flex items-center text-purple-600 hover:text-purple-700 text-sm font-medium"
+                >立即选购 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i
+              ></a>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="site-footer"></div>
     <script src="assets/js/config/products.config.js?v=20260428-3"></script>
-    <script src="assets/js/home.js?v=20260428-3"></script>
+    <script src="assets/js/home.js?v=20260504-1"></script>
     <script src="assets/js/nav-auth.js?v=20260428-3"></script>
 </body>
 </html>

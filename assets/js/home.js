@@ -3,15 +3,28 @@ $(function () {
   // 产品配置由 assets/js/config/products.config.js 注入到 window 上。
   const config = window.PRODUCT_PAGE_CONFIG;
 
-  // 如果配置文件没有加载成功，直接停止渲染，避免首页报错。
-  if (!config) {
-    return;
+  // 如果配置文件加载成功，就把首页顶部的热门产品渲染出来。
+  if (config) {
+    const products = config.sections.flatMap((section) => section.products).slice(0, 4);
+    $('#home-hot-products').empty().append(products.map(renderHotProductCard));
   }
 
-  // 首页只展示前 4 个商品，数据来源仍然和产品购买页保持一致。
-  const products = config.sections.flatMap((section) => section.products).slice(0, 4);
-  $('#home-hot-products').empty().append(products.map(renderHotProductCard));
+  // 不管配置是否加载成功，Tab 都可以点击切换。
+  bindPopularProductTabs();
 });
+
+function bindPopularProductTabs() {
+  // 简单三步：选中按钮，取消全部内容，显示当前内容。
+  $('.popular-product-tab').on('click', function () {
+    var target = $(this).data('popular-product-tab');
+
+    $('.popular-product-tab').removeClass('active');
+    $(this).addClass('active');
+
+    $('.popular-product-panel').removeClass('active');
+    $('[data-popular-product-panel="' + target + '"]').addClass('active');
+  });
+}
 
 function renderHotProductCard(product) {
   // 每个热门产品卡片点击后进入购买页，并把实例规格带到 URL 参数中。
