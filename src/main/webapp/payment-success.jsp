@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支付成功 - AJOU</title>
+  <script src="assets/js/vendor/tailwindcss-cdn.js?v=local-precompiled"></script>
+  <script src="assets/js/tailwind-config.js?v=20260428-3"></script>
+  <script src="assets/js/vendor/jquery-3.7.1.min.js?v=20260428-1"></script>
+  <script src="assets/js/layout.js?v=20260612-4"></script>
+  <link href="/assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260428-5">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen">
+  <main class="min-h-screen flex items-center justify-center px-4 py-12">
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm w-full max-w-xl p-8 text-center">
+      <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-5">
+        <i class="fa-solid fa-check text-3xl"></i>
+      </div>
+
+      <h1 class="text-2xl font-bold text-gray-900 mb-3">支付成功</h1>
+      <p class="text-gray-500 mb-6">资源正在分配中，请稍后前往控制台查看实例状态。</p>
+
+      <div class="bg-gray-50 border border-gray-100 rounded p-4 text-left text-sm text-gray-600 mb-6">
+        <div class="flex justify-between gap-4">
+          <span class="text-gray-500">订单编号</span>
+          <span id="success-order-id" class="font-mono text-gray-900 text-right break-all">-</span>
+        </div>
+        <div class="flex justify-between gap-4 mt-3">
+          <span class="text-gray-500">当前状态</span>
+          <span class="text-primary font-medium">资源分配中</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-2 text-sm text-gray-500 mb-7">
+        <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+        <span>支付完成</span>
+        <span class="w-8 h-px bg-gray-300"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+        <span>分配资源</span>
+        <span class="w-8 h-px bg-gray-300"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+        <span>开通完成</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="console.jsp" class="bg-primary hover:bg-primary-hover text-white font-medium py-2.5 px-6 rounded transition">
+          前往控制台
+        </a>
+        <a href="products.jsp" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-2.5 px-6 rounded transition">
+          继续购买
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('success-order-id').innerText = params.get('order_id') || '-';
+  </script>
+  <script src="assets/js/ai-guide.js?v=20260613-1"></script>
+  <script src="assets/js/nav-auth.js?v=20260428-3"></script>
+</body>
+</html>

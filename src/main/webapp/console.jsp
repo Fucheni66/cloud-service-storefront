@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>控制台 - AJOU</title>
+  <script src="assets/js/vendor/tailwindcss-cdn.js?v=local-precompiled"></script>
+  <script src="assets/js/tailwind-config.js?v=20260428-3"></script>
+  <script src="assets/js/vendor/jquery-3.7.1.min.js?v=20260428-1"></script>
+  <script src="assets/js/layout.js?v=20260612-4"></script>
+  <link href="/assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260428-5">
+<script src="assets/js/require-auth.js?v=20260428-3"></script>
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <div id="site-header"></div>
+
+  <main class="flex-grow bg-bg-gray pb-16">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div>
+          <div>
+            <div class="text-sm text-gray-500 mb-3">
+              <a href="index.jsp" class="hover:text-primary">首页</a>
+              <span class="mx-2">/</span>
+              <span class="text-gray-900">控制台</span>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-3">云服务控制台</h1>
+            <p class="text-gray-500">集中查看用户已购买的云服务器、GPU 实例、数据库和加速服务。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">我的云服务</h2>
+          <p class="text-sm text-gray-500 mt-1">购买成功后，资源会显示在这里。</p>
+        </div>
+        <a href="products.jsp" class="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition shadow-sm">
+          购买新服务 <i class="fa-solid fa-plus ml-2 text-xs"></i>
+        </a>
+      </div>
+      <div id="console-services" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/config/console.config.js?v=20260612-feat"></script>
+  <script src="assets/js/console.js?v=20260428-3"></script>
+  <script src="assets/js/ai-guide.js?v=20260613-1"></script>
+  <script src="assets/js/nav-auth.js?v=20260612-feat"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<%-- 公共 <head> 资源：Tailwind / jQuery / Font Awesome，复用 AJOU 设计 token --%>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%-- 预编译静态 Tailwind CSS（替代运行时 Play CDN，加速页面加载）--%>
+<link rel="stylesheet" href="/assets/css/tailwind.css?v=precompiled-1">
+<script src="/assets/js/vendor/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
