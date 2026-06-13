@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发表内容 - AJOU</title>
+  <script src="assets/js/vendor/tailwindcss-cdn.js?v=local-precompiled"></script>
+  <script src="assets/js/tailwind-config.js?v=20260428-3"></script>
+  <script src="assets/js/vendor/jquery-3.7.1.min.js?v=20260428-1"></script>
+  <script src="assets/js/layout.js?v=20260612-4"></script>
+  <link href="/assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260428-5">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <div id="site-header"></div>
+
+  <main class="flex-grow bg-bg-gray pb-16">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-sm text-gray-500 mb-3">
+          <a href="index.jsp" class="hover:text-primary">首页</a>
+          <span class="mx-2">/</span>
+          <a href="developer-community.jsp" class="hover:text-primary">开发者社区</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-900">发表内容</span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-3">发表内容</h1>
+        <p class="text-gray-500">发布问题、经验或教程，和其他开发者一起交流云资源使用经验。</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+        <form id="community-publish-form" class="bg-white border border-gray-200 rounded-lg p-6 space-y-5">
+          <div id="publish-success" class="hidden bg-green-50 border border-green-100 text-green-700 rounded p-3 text-sm">
+            内容已提交为页面预览状态。
+          </div>
+
+          <div>
+            <label for="publish-type" class="block text-sm font-medium text-gray-700 mb-2">内容类型</label>
+            <select id="publish-type" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary">
+              <option>问题求助</option>
+              <option>经验分享</option>
+              <option>教程文章</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="publish-title" class="block text-sm font-medium text-gray-700 mb-2">标题</label>
+            <input id="publish-title" type="text" required placeholder="请用一句话描述你的问题或经验" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary">
+          </div>
+
+          <div>
+            <label for="publish-category" class="block text-sm font-medium text-gray-700 mb-2">分类</label>
+            <select id="publish-category" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary">
+              <option>云服务器 ECS</option>
+              <option>GPU 云服务器</option>
+              <option>费用中心</option>
+              <option>网络与安全</option>
+              <option>账号与工单</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="publish-content" class="block text-sm font-medium text-gray-700 mb-2">正文</label>
+            <textarea id="publish-content" required rows="10" placeholder="请补充环境、操作步骤、报错信息或期望效果。" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary resize-y"></textarea>
+          </div>
+
+          <div>
+            <label for="publish-contact" class="block text-sm font-medium text-gray-700 mb-2">联系方式</label>
+            <input id="publish-contact" type="text" placeholder="可选，便于支持人员联系" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary">
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 justify-end">
+            <a href="developer-community.jsp" class="inline-flex items-center justify-center bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-5 py-2.5 rounded text-sm font-medium transition">取消</a>
+            <button type="submit" class="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded text-sm font-medium transition">
+              发布内容 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </button>
+          </div>
+        </form>
+
+        <aside class="space-y-6">
+          <section class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">发布建议</h2>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1"></i><span>标题尽量明确，方便其他开发者判断问题范围。</span></li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1"></i><span>正文中写清实例规格、地域和操作步骤。</span></li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1"></i><span>涉及订单号或密钥时，请先隐藏敏感信息。</span></li>
+            </ul>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">相关入口</h2>
+            <div class="space-y-3 text-sm">
+              <a href="developer-community.jsp#help" class="flex items-center justify-between text-gray-600 hover:text-primary">
+                <span>社区问答</span>
+                <i class="fa-solid fa-angle-right text-xs"></i>
+              </a>
+              <a href="developer-community.jsp#ticket" class="flex items-center justify-between text-gray-600 hover:text-primary">
+                <span>技术支持</span>
+                <i class="fa-solid fa-angle-right text-xs"></i>
+              </a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/community.js?v=20260612-13"></script>
+  <script src="assets/js/ai-guide.js?v=20260613-1"></script>
+  <script src="assets/js/nav-auth.js?v=20260428-3"></script>
+</body>
+</html>

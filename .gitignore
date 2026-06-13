@@ -1,0 +1,24 @@
+# Maven 构建产物
+target/
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# 系统文件
+.DS_Store
+
+# 依赖与日志
+node_modules/
+*.log
+
+# 不提交密钥与运行期数据
+# 生产数据库全量导出（含真实账号/密钥/用户数据），仅本地保留，切勿提交
+*full*.sql
+*.dump
+*.local.properties

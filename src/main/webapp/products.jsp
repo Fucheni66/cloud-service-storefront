@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品购买 - AJOU</title>
+  <script src="assets/js/vendor/tailwindcss-cdn.js?v=local-precompiled"></script>
+  <script src="assets/js/tailwind-config.js?v=20260428-3"></script>
+  <script src="assets/js/vendor/jquery-3.7.1.min.js?v=20260428-1"></script>
+  <script src="assets/js/layout.js?v=20260612-4"></script>
+  <link href="/assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260428-5">
+</head>
+<body class="bg-bg-gray text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <div id="site-header"></div>
+
+  <main class="flex-grow bg-bg-gray pb-20">
+    <section class="bg-white border-b border-gray-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 id="products-hero-title" class="text-3xl font-bold text-gray-900 mb-4"></h1>
+        <p id="products-hero-description" class="text-lg text-gray-500"></p>
+      </div>
+    </section>
+
+    <section id="product-sections" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"></section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/config/products.config.js?v=20260428-3"></script>
+  <script src="assets/js/products.js?v=20260428-3"></script>
+  <script src="assets/js/ai-guide.js?v=20260613-1"></script>
+  <script src="assets/js/nav-auth.js?v=20260428-3"></script>
+</body>
+</html>

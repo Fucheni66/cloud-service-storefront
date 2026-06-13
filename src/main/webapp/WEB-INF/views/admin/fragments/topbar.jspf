@@ -1,0 +1,13 @@
+<%-- 后台顶部条。调用方需先定义 ${pageTitle} --%>
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 sticky top-0 z-10">
+    <h1 class="text-lg font-bold text-gray-900">${pageTitle}</h1>
+    <div class="flex items-center text-sm text-gray-600">
+        <i class="fa-solid fa-circle-user text-primary text-xl"></i>
+        <span class="ml-2 font-medium text-gray-900">${sessionScope.admin.displayName}</span>
+        <span class="ml-1 text-gray-400">(${sessionScope.admin.username})</span>
+        <a href="${pageContext.request.contextPath}/admin/logout"
+           class="ml-4 border border-gray-300 rounded px-3 py-1.5 hover:text-primary hover:border-primary transition">
+            <i class="fa-solid fa-right-from-bracket"></i> 退出
+        </a>
+    </div>
+</header>
